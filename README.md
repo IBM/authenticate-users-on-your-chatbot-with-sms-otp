@@ -26,66 +26,43 @@ When you have completed this code pattern, you will understand how to:
 # Steps
 
 1. [Clone the repo](#1-clone-the-repo).
-2. [Create Watson services](#2-create-watson-services).
+2. [Create Watson Assistant Services](#2-create-watson-assistant-services).
 3. [Import the Watson Assistant workspace](#3-import-the-watson-assistant-workspace).
-4. [Configure credentials](#4-configure-credentials).
-5. [Run the application](#5-run-the-application).
+4. [Create a Twilio service](#4-create-a-twilio-service).
+5. [Deploy Custom APIs on Cloud](#5-deploy-custom-apis-on-cloud).
+6. [Create a Cloud Function Action](#6-create-a-cloud-function-action).
+7. [Configure Watson Assistant with Cloud Function URL](#7-configure-watson-assistant-with-cloud-function-url).
+8. [Run the Web Application](#8-run-the-web-application).
 
 ### 1. Clone the repo
 
-Clone the `watson-banking-chatbot` repo locally. In a terminal, run:
+Clone the `authenticate-users-on-your-chatbot-with-sms-otp` repo locally. In a terminal, run:
 
 ```bash
-git clone https://github.com/IBM/watson-banking-chatbot
+git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp.git
 ```
 
-We’ll be using the file [`data/assistant/workspaces/banking.json`](data/assistant/workspaces/banking.json) and the folder
-[`data/assistant/workspaces/`](data/assistant/workspaces/)
-
-### 2. Create Watson services
-
-Create the following services:
+### 2. Create Watson Assistant services
 
 * [**Watson Assistant**](https://cloud.ibm.com/catalog/services/assistant)
-* [**Watson Discovery**](https://cloud.ibm.com/catalog/services/discovery)
-* [**Watson Tone Analyzer**](https://cloud.ibm.com/catalog/services/tone-analyzer)
-* [**Watson Natural Language Understanding**](https://cloud.ibm.com/catalog/services/natural-language-understanding)
 
 ### 3. Import the Watson Assistant workspace
 
-* Find the Watson Assistant service in your IBM Cloud Dashboard.
-* Select the service, and then click **Launch tool**.
-* Go to the **Skills** tab.
-* Click **Create skill**.
-* Click the **Import skill** tab.
-* Click **Choose JSON file**, go to your cloned repo dir, and `Open` the workspace.json file in `data/conversation/workspaces/banking.json` (or the old full version in `full_banking.json`).
-* Select **Everything**, and click **Import**.
+### 4. Create Twilio service
 
-To find the `WORKSPACE_ID` for Watson Assistant:
+### 5. Deploy Custom APIs on Cloud
 
-* Go back to the **Skills** tab.
-* Click the three dots in the upper-right corner of the **watson-banking-chatbot** card, and select **View API Details**.
-* Copy the `Workspace ID` GUID.
-  ![view_api_details](doc/source/images/view_api_details.png)
+### 6. Create a Cloud Function Action
 
-*Optionally*, to view the assistant dialog, select the workspace and choose the
-**Dialog** tab. Here's a snippet of the dialog:
+### 7. Configure Watson Assistant with Cloud Function URL
 
-![dialog](doc/source/images/dialog.PNG)
-
-
-### 4. Configure credentials
-
-
-### 5. Run the application
+### 8. Run the Web Application
 
 1. Install [Node.js](https://nodejs.org/en/) runtime or NPM.
 1. Start the app by running `npm install`, followed by `npm start`.
 1. Use the chatbot at `localhost:3000`.
 
 > Note: The server host can be changed as required in the server.js file, and `PORT` can be set in the `.env` file.
-
-# Sample output
 
 ## Questions
 If you have any questions or issues you can create a new [issue here][issues].
