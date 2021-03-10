@@ -1,47 +1,93 @@
-<!-- This should be the location of the title of the repository, normally the short name -->
-# repo-template
+# [Title]
 
-<!-- Build Status, is a great thing to have at the top of your repository, it shows that you take your CI/CD as first class citizens -->
-<!-- [![Build Status](https://travis-ci.org/jjasghar/ibm-cloud-cli.svg?branch=master)](https://travis-ci.org/jjasghar/ibm-cloud-cli) -->
+In this code pattern, we will [create something] using [technologies] and [components]. [Explain briefly how things work]. [Give acknowledgements to others if necessary]
 
-<!-- Not always needed, but a scope helps the user understand in a short sentance like below, why this repo exists -->
-## Scope
+When you have completed this code pattern, you will understand how to:
 
-The purpose of this project is to provide a template for new open source repositories.
+* [goal 1]
+* [goal 2]
+* [goal 3]
+* [goal 4]
 
-<!-- A more detailed Usage or detailed explaination of the repository here -->
-## Usage
+![architecture](doc/source/images/architecture.png)
 
-This repository contains some example best practices for open source repositories:
+## Flow
 
-* [LICENSE](LICENSE)
-* [README.md](README.md)
-* [CONTRIBUTING.md](CONTRIBUTING.md)
-* [MAINTAINERS.md](MAINTAINERS.md)
-<!-- A Changelog allows you to track major changes and things that happen, https://github.com/github-changelog-generator/github-changelog-generator can help automate the process -->
-* [CHANGELOG.md](CHANGELOG.md)
+1. Step 1.
+2. Step 2.
+3. Step 3.
+4. Step 4.
+5. Step 5.
 
-> These are optional
+# Watch the Video
 
-<!-- The following are OPTIONAL, but strongly suggested to have in your repository. -->
-* [dco.yml](.github/dco.yml) - This enables DCO bot for you, please take a look https://github.com/probot/dco for more details.
-* [travis.yml](.travis.yml) - This is a example `.travis.yml`, please take a look https://docs.travis-ci.com/user/tutorial/ for more details.
+[![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg)
 
-These may be copied into a new or existing project to make it easier for developers not on a project team to collaborate.
+# Steps
 
-<!-- A notes section is useful for anything that isn't covered in the Usage or Scope. Like what we have below. -->
-## Notes
+1. [Clone the repo](#1-clone-the-repo).
+2. [Create Watson services](#2-create-watson-services).
+3. [Import the Watson Assistant workspace](#3-import-the-watson-assistant-workspace).
+4. [Configure credentials](#4-configure-credentials).
+5. [Run the application](#5-run-the-application).
 
-**NOTE: While this boilerplate project uses the Apache 2.0 license, when
-establishing a new repo using this template, please use the
-license that was approved for your project.**
+### 1. Clone the repo
 
-**NOTE: This repository has been configured with the [DCO bot](https://github.com/probot/dco).
-When you set up a new repository that uses the Apache license, you should
-use the DCO to manage contributions. The DCO bot will help enforce that.
-Please contact one of the IBM GH Org stewards.**
+Clone the `watson-banking-chatbot` repo locally. In a terminal, run:
 
-<!-- Questions can be useful but optional, this gives you a place to say, "This is how to contact this project maintainers or create PRs -->
+```bash
+git clone https://github.com/IBM/watson-banking-chatbot
+```
+
+We’ll be using the file [`data/assistant/workspaces/banking.json`](data/assistant/workspaces/banking.json) and the folder
+[`data/assistant/workspaces/`](data/assistant/workspaces/)
+
+### 2. Create Watson services
+
+Create the following services:
+
+* [**Watson Assistant**](https://cloud.ibm.com/catalog/services/assistant)
+* [**Watson Discovery**](https://cloud.ibm.com/catalog/services/discovery)
+* [**Watson Tone Analyzer**](https://cloud.ibm.com/catalog/services/tone-analyzer)
+* [**Watson Natural Language Understanding**](https://cloud.ibm.com/catalog/services/natural-language-understanding)
+
+### 3. Import the Watson Assistant workspace
+
+* Find the Watson Assistant service in your IBM Cloud Dashboard.
+* Select the service, and then click **Launch tool**.
+* Go to the **Skills** tab.
+* Click **Create skill**.
+* Click the **Import skill** tab.
+* Click **Choose JSON file**, go to your cloned repo dir, and `Open` the workspace.json file in `data/conversation/workspaces/banking.json` (or the old full version in `full_banking.json`).
+* Select **Everything**, and click **Import**.
+
+To find the `WORKSPACE_ID` for Watson Assistant:
+
+* Go back to the **Skills** tab.
+* Click the three dots in the upper-right corner of the **watson-banking-chatbot** card, and select **View API Details**.
+* Copy the `Workspace ID` GUID.
+  ![view_api_details](doc/source/images/view_api_details.png)
+
+*Optionally*, to view the assistant dialog, select the workspace and choose the
+**Dialog** tab. Here's a snippet of the dialog:
+
+![dialog](doc/source/images/dialog.PNG)
+
+
+### 4. Configure credentials
+
+
+### 5. Run the application
+
+1. Install [Node.js](https://nodejs.org/en/) runtime or NPM.
+1. Start the app by running `npm install`, followed by `npm start`.
+1. Use the chatbot at `localhost:3000`.
+
+> Note: The server host can be changed as required in the server.js file, and `PORT` can be set in the `.env` file.
+
+# Sample output
+
+## Questions
 If you have any questions or issues you can create a new [issue here][issues].
 
 Pull requests are very welcome! Make sure your patches are well tested.
@@ -56,22 +102,6 @@ example:
 
 ## License
 
-All source files must include a Copyright and License header. The SPDX license header is 
-preferred because it can be easily scanned.
+This code pattern is licensed under the Apache License, Version 2. Separate third-party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1](https://developercertificate.org/) and the [Apache License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-If you would like to see the detailed LICENSE click [here](LICENSE).
-
-```text
-#
-# Copyright 2020- IBM Inc. All rights reserved
-# SPDX-License-Identifier: Apache2.0
-#
-```
-## Authors
-
-Optionally, you may include a list of authors, though this is redundant with the built-in
-GitHub list of contributors.
-
-- Author: New OpenSource IBMer <new-opensource-ibmer@ibm.com>
-
-[issues]: https://github.com/IBM/repo-template/issues/new
+[Apache License FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
