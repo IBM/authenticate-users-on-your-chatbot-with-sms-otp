@@ -11,15 +11,3 @@ spec:
     targetPort: 8080
     nodePort: 32020
   type: NodePort
-apiVersion: route.openshift.io/v1
-kind: Route
-metadata:
-  name: otp-apis-url
-  namespace: default
-spec:
-  path: /
-  to:
-    kind: Service
-    name: otp-apis-service
-  port:
-    targetPort: 8080
