@@ -42,7 +42,6 @@ kind: Route
 metadata:
   name: otp-webapp
 spec:
-  host: ""
   path: "/" 
   to:
     kind: Service
