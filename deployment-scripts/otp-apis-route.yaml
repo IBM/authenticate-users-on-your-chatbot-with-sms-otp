@@ -9,4 +9,4 @@ spec:
     kind: Service
     name: otp-apis-service
   port:
-    targetPort: 80
+    targetPort: 8080
