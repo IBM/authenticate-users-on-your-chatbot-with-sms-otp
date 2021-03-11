@@ -5,11 +5,19 @@ metadata:
   labels:
     app: flask
 spec:
-  containers:
-  - name: otp-apis
-    image: manojjahgirdar/otp-apis:v2
-    ports:
-    - containerPort: 8080
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: otp-apis
+        image: manojjahgirdar/otp-apis:v2
+        ports:
+        - containerPort: 8080
 
 ---
 
