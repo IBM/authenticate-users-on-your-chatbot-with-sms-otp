@@ -1,4 +1,4 @@
-apiVersion: route.openshift.io/v1
+apiVersion: ingress.openshift.io/v1
 kind: Ingress
 metadata:
   name: otp-apis-url
