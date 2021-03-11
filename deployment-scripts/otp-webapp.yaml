@@ -18,6 +18,24 @@ spec:
         image: manojjahgirdar/otp-webapp:v2
         ports:
         - containerPort: 8080
+        env:
+        - name: RELEASE
+          value: "Base release"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 5
+          timeoutSeconds: 2
+          periodSeconds: 15
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 8080
+          initialDelaySeconds: 10
+          timeoutSeconds: 2
+          periodSeconds: 15
+
 
 ---
 
