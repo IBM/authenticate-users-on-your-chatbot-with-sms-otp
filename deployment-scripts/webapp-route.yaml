@@ -4,6 +4,7 @@ metadata:
   name: otp-webapp-url
   namespace: default
 spec:
+  host: example.com
   path: /
   to:
     kind: Service
