@@ -5,7 +5,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: otp-webapp-url-default.cpindiateam-cluster-f2c6cdc6801be85fd188b09d006f13e3-0000.us-south.containers.appdomain.cloud
+    - host: example.com
       http:
         paths:
           - path: /
