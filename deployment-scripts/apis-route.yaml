@@ -1,7 +1,7 @@
 apiVersion: route.openshift.io/v1
-kind: Route
+kind: Ingress
 metadata:
-  name: otp-apis-route
+  name: otp-apis-url
   namespace: default
 spec:
   path: /
