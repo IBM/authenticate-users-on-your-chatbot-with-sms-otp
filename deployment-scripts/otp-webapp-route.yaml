@@ -9,4 +9,4 @@ spec:
     kind: Service
     name: otp-webapp-service
   port:
-    targetPort: 80
+    targetPort: 8080
