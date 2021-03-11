@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: otp-webapp-ingress
+  namespace: default
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: otp-webapp-service
+              servicePort: 8080
