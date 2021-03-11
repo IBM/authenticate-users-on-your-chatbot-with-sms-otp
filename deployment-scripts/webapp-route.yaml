@@ -1,17 +1,12 @@
 apiVersion: route.openshift.io/v1
-kind: Ingress
+kind: Route
 metadata:
-  name: minimal-ingress
-  annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+  name: otp-webapp-url
+  namespace: default
 spec:
-  rules:
-  - http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: otp-webapp-service
-            port:
-              number: 8080
+  path: /
+  to:
+    kind: Service
+    name: otp-webapp-service
+  port:
+    targetPort: 8080
