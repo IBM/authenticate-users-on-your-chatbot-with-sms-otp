@@ -42,7 +42,6 @@ kind: Route
 metadata:
   name: otp-apis
 spec:
-  host: ""
   path: "/" 
   to:
     kind: Service
