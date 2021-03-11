@@ -5,19 +5,11 @@ metadata:
   labels:
     app: nodejs
 spec:
-  selector:
-    matchLabels:
-      app: nodejs
-  template:
-    metadata:
-      labels:
-        app: nodejs
-    spec:
-      containers:
-      - name: otp-webapp
-        image: manojjahgirdar/otp-webapp:v2
-        ports:
-        - containerPort: 8080
+  containers:
+  - name: otp-webapp
+    image: manojjahgirdar/otp-webapp:v2
+    ports:
+    - containerPort: 8080
 
 ---
 
@@ -34,15 +26,3 @@ spec:
     targetPort: 8080
     nodePort: 32000
   type: NodePort
-  
----
-
-apiVersion: v1
-kind: Route
-metadata:
-  name: otp-webapp
-spec:
-  path: "/" 
-  to:
-    kind: Service
-    name: otp-webapp-service
