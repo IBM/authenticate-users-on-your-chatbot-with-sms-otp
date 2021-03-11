@@ -27,10 +27,8 @@ metadata:
   name: otp-webapp-service
 spec:
   ports:
-  - port: 8080
-    protocol: TCP
-    targetPort: http
-    name: http
-  selector:
-    app: nodejs
-  type: ClusterIP
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 32000
+  type: NodePort
