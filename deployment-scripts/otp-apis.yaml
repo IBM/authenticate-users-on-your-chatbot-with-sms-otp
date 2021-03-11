@@ -34,3 +34,16 @@ spec:
     targetPort: 8080
     nodePort: 32020
   type: NodePort
+
+---  
+
+apiVersion: v1
+kind: Route
+metadata:
+  name: otp-apis
+spec:
+  host: ""
+  path: "/" 
+  to:
+    kind: Service
+    name: otp-apis-service
