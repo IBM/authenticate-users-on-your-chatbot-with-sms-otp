@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: otp-apis
-        image: manojjahgirdar/otp-apis:v4
+        image: manojjahgirdar/otp-apis:v2
         ports:
         - containerPort: 8080
