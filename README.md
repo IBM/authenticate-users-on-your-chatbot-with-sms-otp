@@ -107,7 +107,7 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 
     ![](doc/source/images/congrats.png)
 
-- To establish connection between the APIs and Twilio we need to get the `trial_phone_number`, `account_sid` and `auth_token` from Twilio. 
+- To establish connection between the APIs and Twilio we need to get the `trial_number`, `account_sid` and `auth_token` from Twilio. 
 
 - Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 3](#3-deploy-custom-apis-on-cloud).
 
@@ -132,7 +132,7 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
     $ ibmcloud login
     ```
 
->NOTE: If you have a federated user ID, instead use the following command to log in with your single sign-on ID.
+    >NOTE: If you have a federated user ID, instead use the following command to log in with your single sign-on ID.
 
     ```bash
     $ ibmcloud login --sso
@@ -194,6 +194,8 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 - Once the credentials are entered you will see the status as `Configured` as shown.
 
     ![](doc/source/images/twilio-conf.png)
+
+- At this point you will have successfully deployed and configured the custom APIs.
 
 ### 4. Create a Cloud Function Action
 - Login to IBM Cloud, and create a [Create a cloud function action](https://cloud.ibm.com/functions/create/action).
