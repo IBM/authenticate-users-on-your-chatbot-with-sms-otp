@@ -55,9 +55,9 @@ Coming Soon.
 
 Clone the `authenticate-users-on-your-chatbot-with-sms-otp` repo locally. In a terminal, run:
 
-    ```bash
-    git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp.git
-    ```
+```bash
+git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp.git
+```
 
 ### 2. Create Twilio service
 
