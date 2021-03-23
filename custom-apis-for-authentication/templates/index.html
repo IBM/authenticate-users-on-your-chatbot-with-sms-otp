@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API's to Authenticate Watson Assistant</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+
+<body>
+    <header class="bx--header" role="banner" aria-label="IBM" data-header>
+        <a class="bx--header__name" href="javascript:void(0)" title="">
+            <span class="bx--header__name--prefix">
+                Authenticate your chatbot
+                &nbsp;
+            </span>
+            APIs
+        </a>
+
+    </header>
+
+    <div class="custom-spacing">
+        <div class="bx--grid">
+            <div class="bx--row">
+                <div class="bx--col-lg-12">
+                    <div class="outside">
+                        <div class="inside">
+                            <h2>Authenticate Watson Assistant Custom APIs</h2>
+                            <br>
+                            <br>
+
+                            <div>
+                                <h5>Add Twilio service credentials to get started</h5>
+                                <br>
+                                <p>If you have created a twilio service, you can find the
+                                    <code>ACCOUNT SID</code> and <code>AUTH TOKEN</code> here: <a
+                                        href="https://www.twilio.com/console">https://www.twilio.com/console</a>.
+                                </p>
+                                <br>
+                                <button class="bx--btn bx--btn--primary" type="button"
+                                    data-modal-target="#modal-twilio-credentials">
+                                    Add Twilio Credentials
+                                    <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                        style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                        class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+                                        aria-hidden="true">
+                                        <path d="M9 7L9 3 7 3 7 7 3 7 3 9 7 9 7 13 9 13 9 9 13 9 13 7z"></path>
+                                    </svg>
+                                </button>
+                                <br>
+                                <br>
+                                
+                                <p><strong>Status: </strong> <code id="twilioStatus"></code></p>
+                                <br>
+                                <br>
+                                <p>If you have not created a twilio service, please create a service here: <a
+                                        href="https://www.twilio.com/try-twilio">https://www.twilio.com/try-twilio</a>.
+                                </p>
+                                <br>
+                                <br>
+                            </div>
+                            <h5>List of APIs with their description</h5>
+                            <br>
+                            <ul data-accordion class="bx--accordion">
+                                <li data-accordion-item class="bx--accordion__item">
+                                  <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane1">
+                                    <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+                                    <div class="bx--accordion__title"> <h4><strong><span style="color: green;">GET</span> <code>/api/v1.0/sendotp</code></strong> <span class="right"> Generate and Send OTP &nbsp;</span></h4></div>
+                                  </button>
+                                  <div id="pane1" class="bx--accordion__content">
+                                    <p><strong>Description:</strong> This API sends the OTP to a given phone number.</p>
+                                    <p><strong>Input:</strong> Phone Number as <strong><code>phoneNo</code></strong> Query Param.</p>
+<p><strong>Output:</strong> <br>Case 1: Success<br> 
+<pre><code>
+{
+    "phone_no": {phoneNo},
+    "otp": {otp},
+    "time": "{time}"
+}
+</code></pre>
+<br/>
+Case 2: Failure<br>
+<pre><code>
+{
+    "message": {exception message}
+}
+</code></pre>
+<br/>                                  </p>
+                                  </div>
+                                </li>
+                                <li data-accordion-item class="bx--accordion__item">
+                                    <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane2">
+                                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+                                      <div class="bx--accordion__title"> <h4><strong><span style="color: green;">GET</span> <code>/api/v1.0/auth</code></strong> <span class="right"> Authentication of OTP &nbsp;</span></h4></div>
+                                    </button>
+                                    <div id="pane2" class="bx--accordion__content">
+                                      <p><strong>Description:</strong> This API can authenticate the user based on OTP.</p>
+                                      <p><strong>Input:</strong> Phone Number as <strong><code>phoneNo</code></strong> and received OTP as <strong><code>otp</code></strong> Query Params.</p>
+  <p><strong>Output:</strong> <br>Case 1: OTP is correct and is entered before 5 min of generation<br> 
+  <pre><code>
+  {
+    "phone_no": {phoneNo},
+    "authentication": true,
+    "validation_msg": "OTP Validated",
+    "policy_no": {policyNo}
+  }
+  </code></pre>
+  <br/>
+  Case 2: OTP is correct, however it is entered after 5 min of generation<br>
+  <pre><code>
+  {
+    "phone_no": {phoneNo},
+    "authentication": false,
+    "validation_msg": "OTP Expired"
+  }
+  </code></pre>
+  <br/>
+  Case 3: OTP is wrong<br>
+  <pre><code>
+  {
+    "phone_no": {phoneNo},
+    "authentication": false,
+    "validation_msg": "Invalid OTP"
+  }
+  </code></pre>
+  <br/>                                            </p>
+                                    </div>
+                                  </li>
+                                  <li data-accordion-item class="bx--accordion__item">
+                                    <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane3">
+                                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+                                      <div class="bx--accordion__title"> <h4><strong><span style="color: orange;">POST</span> <code>/api/v1.0/registeruser</code></strong> <span class="right"> Register User &nbsp;</span></h4></div>
+                                    </button>
+                                    <div id="pane3" class="bx--accordion__content">
+                                      <p><strong>Description:</strong> This API stores new users to the Database.</p>
+                                      <p><strong>Input:</strong> User has to register with the following attributes as <code>raw</code> body data:
+<ol>
+    <li>Name as <strong><code>name</code></strong></li>
+    <li>Phone Number as <strong><code>phone_no</code></strong></li>
+    <li>Policy Number as <strong><code>policy_no</code></strong></li>
+    <li>Premium Amount as <strong><code>premium_date</code></strong></li>
+    <li>Premium Date as <strong><code>premium_amount</code></strong></li>
+    <li>Address as <strong><code>address</code></strong></li>
+</ol>
+</p>
+  <p><strong>Output:</strong> <br>Case 1: Success<br> 
+  <pre><code>
+  {
+    "flag": true
+  }
+  </code></pre>
+  <br/>
+  Case 2: Failure<br>
+  <pre><code>
+  {
+    "flag": false,
+    "message": {exception message}
+  }
+  </code></pre>
+  <br/>                                  </p>
+                                    </div>
+                                  </li>
+                                  <li data-accordion-item class="bx--accordion__item">
+                                    <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane4">
+                                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+                                      <div class="bx--accordion__title"> <h4><strong><span style="color: green;">GET</span> <code>/api/v1.0/listusers</code></strong> <span class="right"> List Users &nbsp;</span></h4></div>
+                                    </button>
+                                    <div id="pane4" class="bx--accordion__content">
+                                      <p><strong>Description:</strong> This API will list all the available user data from the Database.</p>
+                                      <p><strong>Input:</strong> N/A </p>
+  <p><strong>Output:</strong> <br>Case 1: Success<br> 
+  <pre><code>
+  [{
+    "id": 1,
+    "name": "{name}",
+    "phone_no": {phone_no},
+    "policy_no": "{policy_no}",
+    "premium_date": "{premium_date}",
+    "premium_amount": {premium_amount},
+    "address": "{address}"
+    },
+    {
+    "id": 2,
+    "name": "{name}",
+    "phone_no": {phone_no},
+    "policy_no": "{policy_no}",
+    "premium_date": "{premium_date}",
+    "premium_amount": {premium_amount},
+    "address": "{address}"
+  }]
+  </code></pre>
+  <br/>
+  Case 2: Failure<br>
+  <pre><code>
+  {
+    "message": {exception message}
+  }
+  </code></pre>
+  <br/>                                  </p>
+                                    </div>
+                                  </li>
+                                  <li data-accordion-item class="bx--accordion__item">
+                                    <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane5">
+                                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+                                      <div class="bx--accordion__title"> <h4><strong><span style="color: green;">GET</span> <code>/api/v1.0/searchuserphone</code></strong> <span class="right"> Return User Phone Number &nbsp;</span></h4></div>
+                                    </button>
+                                    <div id="pane5" class="bx--accordion__content">
+                                      <p><strong>Description:</strong> This API returns the phone number of the registered user.</p>
+                                      <p><strong>Input:</strong> Policy number of the user as <strong><code>policyNo</code></strong> Query Param.</p>
+  <p><strong>Output:</strong> <br>Case 1: Success<br> 
+  <pre><code>
+  {
+    "id": 1,
+    "phone_no": {phoneNo},
+    "name": "",
+    "policyNo": ""
+  }
+  </code></pre>
+  <br/>
+  Case 2: Failure<br>
+  <pre><code>
+  {
+    "message": {exception message}
+  }
+  </code></pre>
+  <br/>                                  </p>
+                                    </div>
+                                  </li>
+                                  <li data-accordion-item class="bx--accordion__item">
+                                    <button class="bx--accordion__heading" aria-expanded="false" aria-controls="pane6">
+                                      <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;" xmlns="http://www.w3.org/2000/svg" class="bx--accordion__arrow" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M11 8L6 13 5.3 12.3 9.6 8 5.3 3.7 6 3z"></path></svg>
+                                      <div class="bx--accordion__title"> <h4><strong><span style="color: green;">GET</span> <code>/api/v1.0/sendotp</code></strong> <span class="right"> Policy Enquiry &nbsp;</span></h4></div>
+                                    </button>
+                                    <div id="pane6" class="bx--accordion__content">
+                                      <p><strong>Description:</strong> This API returns the enquired policy details from the Database.</p>
+                                      <p><strong>Input:</strong> Policy number of the user as <strong><code>policyNo</code></strong> and Type of Enquiry as <strong><code>enquiryType</code></strong> Query Param.</p>
+  <p><strong>Output:</strong> <br>Case 1: Success<br> 
+  <pre><code>
+  {
+    "message": {message}
+  }
+  </code></pre>
+  <br/>
+  Case 2: Failure<br>
+  <pre><code>
+  {
+    "message": {exception message}
+  }
+  </code></pre>
+  <br/>                                  </p>
+                                    </div>
+                                  </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TWILIO MODAL START-->
+
+        <div data-modal id="modal-twilio-credentials" class="bx--modal" role="dialog" aria-modal="true"
+            aria-labelledby="modal-twilio-credentials-label" aria-describedby="modal-twilio-credentials-heading"
+            tabindex="-1">
+            <div class="bx--modal-container">
+                <div class="bx--modal-header">
+                    <p class="bx--modal-header__label bx--type-delta" id="modal-twilio-credentials-label">Step 1: Add
+                        Twilio service to the Application</p>
+                    <p class="bx--modal-header__heading bx--type-beta" id="modal-twilio-credentials-heading">
+                        Twilio Credentials</p>
+                    <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16"
+                            viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Note: Modals with content that scrolls, at any viewport, requires `tabindex="0"` on the `bx--modal-content` element -->
+
+                <div class="bx--modal-content bx--modal-content--with-form">
+                    <div class="bx--form-item">
+                        <label for="trial_number" class="bx--label">TRIAL NUMBER</label>
+                        <input id="trial_number" type="text" class="bx--text-input" placeholder="Enter Trial Number" data-modal-primary-focus>
+                    </div>
+                    <br>
+                    <div class="bx--form-item">
+                        <label for="account_sid" class="bx--label">ACCOUNT SID</label>
+                        <input id="account_sid" type="text" class="bx--text-input" placeholder="Enter Account SID">
+                    </div>
+                    <br>
+                    <div class="bx--form-item">
+                        <label for="auth_token" class="bx--label">AUTH TOKEN</label>
+                        <input id="auth_token" type="password" class="bx--text-input" placeholder="Enter Auth Token">
+                    </div>
+                    <br>
+                </div>
+                <div class="bx--modal-content--overflow-indicator"></div>
+
+                <div class="bx--modal-footer">
+                    <button class="bx--btn bx--btn--secondary" type="button" data-modal-close>Cancel</button>
+                    <button class="bx--btn bx--btn--primary" id="twilio-cred-submit" type="button"
+                        data-modal-close>Submit</button>
+                </div>
+            </div>
+            <!-- Note: focusable span allows for focus wrap feature within Modals -->
+            <span tabindex="0"></span>
+        </div>
+
+        <!-- TWILIO MODAL END-->
+
+
+    </div>
+
+
+</body>
+<script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+<script src="../static/js/index.js"></script>
+<script>
+    getTwilioStatus();
+</script>
+</html>

@@ -1,0 +1,5 @@
+---
+applications:
+ - name: otp-api
+   random-route: true
+   memory: 512M
