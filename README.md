@@ -67,60 +67,55 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 
 - Enter the your details to signup as shown.
 
-![twilio-signup](doc/source/images/createTwilio.png)
+    ![twilio-signup](doc/source/images/createTwilio.png)
 
 - Once you create a twilio service, you will have to verify your email id as well as your phone number.
 
 - To verify your email id, visit your registered email id and you will see a mail from twilio with a verification link, go ahead and verify.
 
-![](doc/source/images/verifyTwilio.png)
+    ![](doc/source/images/verifyTwilio.png)
 
 - Once email id is verified you will be prompted to enter your phone number, submit that and you will get an OTP on your registered number, enter that back to verify.
 
-![](doc/source/images/verifyMobileTwilio.png)
+    ![](doc/source/images/verifyMobileTwilio.png)
 
 - On successful verification you should see a welcome greeting message, additionally you will see a question **Do you write code?**, select **Yes** to proceed.
 
-![](doc/source/images/twilioWelcome.png)
+    ![](doc/source/images/twilioWelcome.png)
 
 - The second question asked to you would be **What is your preferred language?**, select **Python** to proceed.
 
-![](doc/source/images/twilioWelcome2.png)
+    ![](doc/source/images/twilioWelcome2.png)
 
 - Third question asked to you would be **What is your goal today?**, select **Use Twilio in a project** to proceed.
 
-![](doc/source/images/twilioWelcome3.png)
+    ![](doc/source/images/twilioWelcome3.png)
 
-- The final question asked to you would be **What do you want to do first?**, select **Send WhatsApp messages** to proceed.
+- The final question asked to you would be **What do you want to do first?**, select **Skip to dashboard** to proceed.
 
-![](doc/source/images/twilioWelcome4.png)
-
-- You will then see a popup box requesting you to **Activate Your Sandbox**, click on **I agree** checkbox and click **Confirm**.
-
-![](doc/source/images/allowSandbox.png)
-
-- The sandbox for WhatsApp will appear, make a note of the `Sandbox Name` which will be prefixed with **join**, click on **Settings** on the left panel and select **WhatsApp Sandbox Settings**.
-
-![](doc/source/images/twilioSettings.png) 
-
-- In **WhatsApp Sandbox Settings** page, under **Sandbox Configuration**, there will be a field called **WHEN A MESSAGE COMES IN**, replace the existing URL in that field with the `URL` obtained by deploying the framework from [Step 3](#3-deploy-the-server-application-on-ibm-cloud-foundry), finally click on **Save** to save the configuration.
-
-![](doc/source/images/whatsappSandbox.png)
-
->NOTE: Sometimes the changes are not saved in Twilio WhatsApp Sandbox Settings even after clicking on save, reload the page to enusre the `URL` that you have entered in **WHEN A MESSAGE COMES IN** field is reflecting over there. If you still see the old URL over there then enter the `URL` from [Step 2](#2-deploy-the-server-application-on-ibm-cloud-foundry) again and save it.
-
-- Now the Backend server is configured in Twilio, any message that you send from WhatsApp from this point will go to the backend server via Twilio WhatsApp Sandbox. However to reply back to you from WhatsApp the backend server needs to establish connection with Twilio.
-
-- To establish connection between the backend server and Twilio we need to get the `account_sid` and `auth_token` from Twilio. 
-
-- Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `ACCOUNT ID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 5](#5-configure-credentials).
+    ![](doc/source/images/twilioWelcome4.png)
  
-![](doc/source/images/twilio-credentials-from-twilio-console.png)
+- You will need a twilio `Trial Number` to send messages through the OTP. Click on **Get a Trial Number** as shown.
 
-- At this point, you should have the `Sandbox Name`, `account_sid` and `auth_token` from Twilio service.
+    ![](doc/source/images/twilio-credentials-from-twilio-console.png)
 
-- Now lets create the required watson services.
+- Click on **Choose this Number** to continue. 
 
+    ![](doc/source/images/twilioNo.png)
+
+- A confirmation will be displayed once the number is generated, click on **Done**.
+
+    ![](doc/source/images/congrats.png)
+
+- To establish connection between the APIs and Twilio we need to get the `trial_phone_number`, `account_sid` and `auth_token` from Twilio. 
+
+- Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 3](#3-deploy-custom-apis-on-cloud).
+
+    ![](doc/source/images/credentials-twilio.png)
+
+- At this point, you should have the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN` from Twilio service.
+
+- Now lets deploy the custom APIs and configure twilio credentials.
 
 ### 3. Deploy Custom APIs on Cloud
 
@@ -128,57 +123,57 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 
 - From the cloned repo, goto **custom-apis-for-authentication** directory in terminal, and run the following commands to deploy the Application to IBM Cloud Foundry.
 
-```bash
-$ cd custom-apis-for-authentication/
-```
+    ```bash
+    $ cd custom-apis-for-authentication/
+    ```
 
 * Log in to your IBM Cloud account, and select an API endpoint.
-```bash
-$ ibmcloud login
-```
+    ```bash
+    $ ibmcloud login
+    ```
 
 >NOTE: If you have a federated user ID, instead use the following command to log in with your single sign-on ID.
 
-```bash
-$ ibmcloud login --sso
-```
+    ```bash
+    $ ibmcloud login --sso
+    ```
 
 * Target a Cloud Foundry org and space:
-```bash
-$ ibmcloud target --cf
-```
+    ```bash
+    $ ibmcloud target --cf
+    ```
 
-* From within the _custom-apis-for-authentication_ push your app to IBM Cloud.
-```bash
-$ ibmcloud cf push otp-api
-```
+* From within the _custom-apis-for-authentication_ directory push your app to IBM Cloud.
+    ```bash
+    $ ibmcloud cf push otp-api
+    ```
 
 - The [manifest.yml](custom-apis-for-authentication/manifest.yml) file will be used here to deploy the application to IBM Cloud Foundry.
 
 - On Successful deployment of the application you will see something similar on your terminal as shown.
 
-<pre><code>Invoking 'cf push'...
+    <pre><code>Invoking 'cf push'...
 
-Pushing from manifest to org manoj.jahgirdar@in.ibm.com / space dev as manoj.jahgirdar@in.ibm.com...
+    Pushing from manifest to org manoj.jahgirdar@in.ibm.com / space dev as manoj.jahgirdar@in.ibm.com...
 
-...
+    ...
 
-Waiting for app to start...
+    Waiting for app to start...
 
-name:              otp-api
-requested state:   started
-routes:            <b>otp-api.xx-xx.mybluemix.net </b>
-last uploaded:     Sat 16 May 18:05:16 IST 2020
-stack:             cflinuxfs3
-buildpacks:        python
+    name:              otp-api
+    requested state:   started
+    routes:            <b>otp-api.xx-xx.mybluemix.net </b>
+    last uploaded:     Sat 16 May 18:05:16 IST 2020
+    stack:             cflinuxfs3
+    buildpacks:        python
 
-type:            web
-instances:       1/1
-memory usage:    512M
-start command:   python app.py
-     state     since                  cpu     memory           disk           details
-#0   <b>running</b>   2020-05-16T12:36:15Z   12.6%   116.5M of 512M   796.2M of 1
-</code></pre>
+    type:            web
+    instances:       1/1
+    memory usage:    512M
+    start command:   python app.py
+        state     since                  cpu     memory           disk           details
+    #0   <b>running</b>   2020-05-16T12:36:15Z   12.6%   116.5M of 512M   796.2M of 1
+    </code></pre>
 
 * Once the app is deployed you can visit the `routes` to launch the application.
 
@@ -188,8 +183,17 @@ start command:   python app.py
 
 - Visit the `URL` in your browser to access the framework.
 
->Example: http://otp-api.xx-xx.mybluemix.net
+    >Example: http://otp-api.xx-xx.mybluemix.net
 
+    ![](doc/source/images/screenshot.png)
+
+- Click on the **Add Twilio Credentials** button and enter the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN` copied in the previous step.
+
+    ![](doc/source/images/add-twilio.png)
+
+- Once the credentials are entered you will see the status as `Configured` as shown.
+
+    ![](doc/source/images/twilio-conf.png)
 
 ### 4. Create a Cloud Function Action
 - Login to IBM Cloud, and create a [Create a cloud function action](https://cloud.ibm.com/functions/create/action).
