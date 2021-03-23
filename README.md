@@ -61,10 +61,138 @@ git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp
 
 ### 2. Create Twilio service
 
+Twlio is a SaaS offering that provides APIs to make and receive calls or text messages. As there are no APIs from WhatsApp directly availabe to send and receive WhatsApp messages programmatically, you will learn how to use Twilio's messaging service APIs that provides gateway to communicate with WhatsApp programmatically. Lets start by creating a free Twilio service.
+
+- Create a free Twilio service here: <https://www.twilio.com/try-twilio>.
+
+- Enter the your details to signup as shown.
+
+![twilio-signup](doc/source/images/createTwilio.png)
+
+- Once you create a twilio service, you will have to verify your email id as well as your phone number.
+
+- To verify your email id, visit your registered email id and you will see a mail from twilio with a verification link, go ahead and verify.
+
+![](doc/source/images/verifyTwilio.png)
+
+- Once email id is verified you will be prompted to enter your phone number, submit that and you will get an OTP on your registered number, enter that back to verify.
+
+![](doc/source/images/verifyMobileTwilio.png)
+
+- On successful verification you should see a welcome greeting message, additionally you will see a question **Do you write code?**, select **Yes** to proceed.
+
+![](doc/source/images/twilioWelcome.png)
+
+- The second question asked to you would be **What is your preferred language?**, select **Python** to proceed.
+
+![](doc/source/images/twilioWelcome2.png)
+
+- Third question asked to you would be **What is your goal today?**, select **Use Twilio in a project** to proceed.
+
+![](doc/source/images/twilioWelcome3.png)
+
+- The final question asked to you would be **What do you want to do first?**, select **Send WhatsApp messages** to proceed.
+
+![](doc/source/images/twilioWelcome4.png)
+
+- You will then see a popup box requesting you to **Activate Your Sandbox**, click on **I agree** checkbox and click **Confirm**.
+
+![](doc/source/images/allowSandbox.png)
+
+- The sandbox for WhatsApp will appear, make a note of the `Sandbox Name` which will be prefixed with **join**, click on **Settings** on the left panel and select **WhatsApp Sandbox Settings**.
+
+![](doc/source/images/twilioSettings.png) 
+
+- In **WhatsApp Sandbox Settings** page, under **Sandbox Configuration**, there will be a field called **WHEN A MESSAGE COMES IN**, replace the existing URL in that field with the `URL` obtained by deploying the framework from [Step 3](#3-deploy-the-server-application-on-ibm-cloud-foundry), finally click on **Save** to save the configuration.
+
+![](doc/source/images/whatsappSandbox.png)
+
+>NOTE: Sometimes the changes are not saved in Twilio WhatsApp Sandbox Settings even after clicking on save, reload the page to enusre the `URL` that you have entered in **WHEN A MESSAGE COMES IN** field is reflecting over there. If you still see the old URL over there then enter the `URL` from [Step 2](#2-deploy-the-server-application-on-ibm-cloud-foundry) again and save it.
+
+- Now the Backend server is configured in Twilio, any message that you send from WhatsApp from this point will go to the backend server via Twilio WhatsApp Sandbox. However to reply back to you from WhatsApp the backend server needs to establish connection with Twilio.
+
+- To establish connection between the backend server and Twilio we need to get the `account_sid` and `auth_token` from Twilio. 
+
+- Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `ACCOUNT ID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 5](#5-configure-credentials).
+ 
+![](doc/source/images/twilio-credentials-from-twilio-console.png)
+
+- At this point, you should have the `Sandbox Name`, `account_sid` and `auth_token` from Twilio service.
+
+- Now lets create the required watson services.
+
+
 ### 3. Deploy Custom APIs on Cloud
 
+- Before you proceed, make sure you have installed [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US) in your deployment machine.
+
+- From the cloned repo, goto **custom-apis-for-authentication** directory in terminal, and run the following commands to deploy the Application to IBM Cloud Foundry.
+
+```bash
+$ cd custom-apis-for-authentication/
+```
+
+* Log in to your IBM Cloud account, and select an API endpoint.
+```bash
+$ ibmcloud login
+```
+
+>NOTE: If you have a federated user ID, instead use the following command to log in with your single sign-on ID.
+
+```bash
+$ ibmcloud login --sso
+```
+
+* Target a Cloud Foundry org and space:
+```bash
+$ ibmcloud target --cf
+```
+
+* From within the _custom-apis-for-authentication_ push your app to IBM Cloud.
+```bash
+$ ibmcloud cf push otp-api
+```
+
+- The [manifest.yml](custom-apis-for-authentication/manifest.yml) file will be used here to deploy the application to IBM Cloud Foundry.
+
+- On Successful deployment of the application you will see something similar on your terminal as shown.
+
+<pre><code>Invoking 'cf push'...
+
+Pushing from manifest to org manoj.jahgirdar@in.ibm.com / space dev as manoj.jahgirdar@in.ibm.com...
+
+...
+
+Waiting for app to start...
+
+name:              otp-api
+requested state:   started
+routes:            <b>otp-api.xx-xx.mybluemix.net </b>
+last uploaded:     Sat 16 May 18:05:16 IST 2020
+stack:             cflinuxfs3
+buildpacks:        python
+
+type:            web
+instances:       1/1
+memory usage:    512M
+start command:   python app.py
+     state     since                  cpu     memory           disk           details
+#0   <b>running</b>   2020-05-16T12:36:15Z   12.6%   116.5M of 512M   796.2M of 1
+</code></pre>
+
+* Once the app is deployed you can visit the `routes` to launch the application.
+
+>Example: http://otp-api.xx-xx.mybluemix.net
+
+- At this point, you will have successfully deployed the framework on IBM Cloud. Now lets access it and see how it looks like.
+
+- Visit the `URL` in your browser to access the framework.
+
+>Example: http://otp-api.xx-xx.mybluemix.net
+
+
 ### 4. Create a Cloud Function Action
-*  [Create a cloud function](https://cloud.ibm.com/functions/create/action)
+- Login to IBM Cloud, and create a [Create a cloud function action](https://cloud.ibm.com/functions/create/action).
 * Enter a cloud function name and select Python 3.7 for runtime environment and press create.
 ![createCF](doc/source/images/createCF.png)
 
@@ -84,8 +212,6 @@ git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp
 ![cfCopy](doc/source/images/cfCopy.png)
 >NOTE: The Above URL should end with .json if it is not ending with .json please append .json at the end of the URL. 
 **NOTE: This URL is Important, please save it in any notepad since it will be used in subsequent steps.**
-
-
 
 ### 5. Create Watson Assistant services
 
@@ -137,7 +263,6 @@ git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp
 * Select Options>Webhooks from the left panel and paste the URL copied in [Step 4](#4-create-a-cloud-function-action) in the text box.
 ![enterWebhook](doc/source/images/enterWebhook.png)
 
-
 ### 8. Run the Web Application
 * Open the repository in your terminal and navigate to `node-web-application` directory.
 * Start the app by running `npm install`, followed by `node server.js`.
@@ -156,14 +281,10 @@ git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp
 * You can now interact with chatbot and know your confidential information in a secure manner.
 ![chatFlow](doc/source/images/chatFlow.png)
 
-
-
-
-
 > Note: The server host can be changed as required in the server.js file, and `PORT` can be set in the `.env` file.
 
 ## Questions
-If you have any questions or issues you can create a new [issue here][issues].
+If you have any questions or issues you can create a new [issue here](https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp/pulls).
 
 Pull requests are very welcome! Make sure your patches are well tested.
 Ideally create a topic branch for every separate change you make. For
