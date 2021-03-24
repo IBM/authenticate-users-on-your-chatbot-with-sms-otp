@@ -115,6 +115,10 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 
 - At this point, you should have the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN` from Twilio service.
 
+#### Verified Caller IDs
+
+Twilio trial number doesn't send messages to your phone number if your phone number is not added to the `Verified Caller IDs` list. This is a limitation of a free trial number. Visit <https://www.twilio.com/console/phone-numbers/verified> and add your phone number to the verified caller ID list before you continue.
+
 - Now lets deploy the custom APIs and configure twilio credentials.
 
 ### 3. Deploy Custom APIs on Cloud
