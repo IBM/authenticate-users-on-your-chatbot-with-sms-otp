@@ -43,7 +43,7 @@ Coming Soon.
 # Steps
 
 1. [Clone the repo](#1-clone-the-repo).
-2. [Create a Twilio service](#2-create-a-twilio-service).
+2. [Create Twilio service](#2-create-twilio-service).
 3. [Deploy Custom APIs on Cloud](#3-deploy-custom-apis-on-cloud).
 4. [Create a Cloud Function Action](#4-create-a-cloud-function-action).
 5. [Create Watson Assistant Services](#5-create-watson-assistant-services).
