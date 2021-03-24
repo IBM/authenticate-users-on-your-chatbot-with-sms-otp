@@ -1,0 +1,1396 @@
+{
+  "intents": [
+    {
+      "intent": "Contact_Us",
+      "examples": [
+        {
+          "text": "How to contact you?"
+        },
+        {
+          "text": "What is your contact number"
+        },
+        {
+          "text": "What is your email address"
+        },
+        {
+          "text": "What is your phone number"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "forgot_policy_number",
+      "examples": [
+        {
+          "text": "I don't remem"
+        },
+        {
+          "text": "i dont remember"
+        },
+        {
+          "text": "I forgot my policy number"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "General_Ending",
+      "examples": [
+        {
+          "text": "Bye bye"
+        },
+        {
+          "text": "Bye now"
+        },
+        {
+          "text": "Catch you later"
+        },
+        {
+          "text": "Cya later"
+        },
+        {
+          "text": "Ending this session"
+        },
+        {
+          "text": "End trial"
+        },
+        {
+          "text": "Finished now, good bye"
+        },
+        {
+          "text": "Get lost"
+        },
+        {
+          "text": "Go away"
+        },
+        {
+          "text": "Going now"
+        },
+        {
+          "text": "Good. bye."
+        },
+        {
+          "text": "Goodbye"
+        },
+        {
+          "text": "Go off"
+        },
+        {
+          "text": "Have a nice day?"
+        },
+        {
+          "text": "Hey bot go away"
+        },
+        {
+          "text": "I am leaving"
+        },
+        {
+          "text": "I am out of here"
+        },
+        {
+          "text": "I d like to stop doing this"
+        },
+        {
+          "text": "I have got to go"
+        },
+        {
+          "text": "I'm done"
+        },
+        {
+          "text": "Im done"
+        },
+        {
+          "text": "Im good thank you"
+        },
+        {
+          "text": "I'm leaving now"
+        },
+        {
+          "text": "It was nice chatting with you"
+        },
+        {
+          "text": "I want to quit"
+        },
+        {
+          "text": "Ok goodbye"
+        },
+        {
+          "text": "See you"
+        },
+        {
+          "text": "See you later"
+        },
+        {
+          "text": "Shut up"
+        },
+        {
+          "text": "Stop doing this"
+        },
+        {
+          "text": "Stop talking to me"
+        },
+        {
+          "text": "Thanks, bye!"
+        },
+        {
+          "text": "Thanks very much, bye!"
+        },
+        {
+          "text": "Thank you for your time"
+        },
+        {
+          "text": "That is all"
+        },
+        {
+          "text": "That's everything"
+        },
+        {
+          "text": "Time to go"
+        }
+      ],
+      "description": "End the conversation."
+    },
+    {
+      "intent": "General_Greetings",
+      "examples": [
+        {
+          "text": "Good day"
+        },
+        {
+          "text": "Good evening"
+        },
+        {
+          "text": "Good morning"
+        },
+        {
+          "text": "Good to see you"
+        },
+        {
+          "text": "Greetings"
+        },
+        {
+          "text": "Have you been well?"
+        },
+        {
+          "text": "Hello"
+        },
+        {
+          "text": "Hello Agent"
+        },
+        {
+          "text": "Hello I am looking for some help here"
+        },
+        {
+          "text": "Hey how are you doing"
+        },
+        {
+          "text": "Hey there"
+        },
+        {
+          "text": "Hey there all"
+        },
+        {
+          "text": "Hey twin"
+        },
+        {
+          "text": "Hey you"
+        },
+        {
+          "text": "Hi advisor"
+        },
+        {
+          "text": "Hi there"
+        },
+        {
+          "text": "How are things going?"
+        },
+        {
+          "text": "How are you today?"
+        },
+        {
+          "text": "How have you been?"
+        },
+        {
+          "text": "How is it going?"
+        },
+        {
+          "text": "How r u?"
+        },
+        {
+          "text": "Looking good eve"
+        },
+        {
+          "text": "Ok take me back"
+        },
+        {
+          "text": "What's new?"
+        },
+        {
+          "text": "What's up?"
+        },
+        {
+          "text": "Who is this?"
+        },
+        {
+          "text": "You there"
+        }
+      ],
+      "description": "Greet the bot."
+    },
+    {
+      "intent": "get_name",
+      "examples": [
+        {
+          "text": "i am manoj"
+        },
+        {
+          "text": "manoj"
+        },
+        {
+          "text": "my name is manoj"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Insurance_Plans",
+      "examples": [
+        {
+          "text": "Insurance plans"
+        },
+        {
+          "text": "what are different policies you have?"
+        },
+        {
+          "text": "What insurance plans do you have?"
+        },
+        {
+          "text": "What insurance products do you have?"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "Policy_Details",
+      "examples": [
+        {
+          "text": "I want to know my policy details"
+        },
+        {
+          "text": "I want to know my premium amount"
+        },
+        {
+          "text": "What is my premium due date"
+        },
+        {
+          "text": "What is my sum assured on my policy"
+        }
+      ],
+      "description": ""
+    },
+    {
+      "intent": "policy_number",
+      "examples": [
+        {
+          "text": "I want to know my policy number"
+        },
+        {
+          "text": "policy number"
+        }
+      ],
+      "description": "to get policy number"
+    },
+    {
+      "intent": "premium_amount",
+      "examples": [
+        {
+          "text": "how much do I have to pay?"
+        },
+        {
+          "text": "I want to know my premium amount"
+        },
+        {
+          "text": "premium amount"
+        },
+        {
+          "text": "What is my premium amount?"
+        }
+      ],
+      "description": "to get premium amount"
+    },
+    {
+      "intent": "premium_date",
+      "examples": [
+        {
+          "text": "date"
+        },
+        {
+          "text": "I want to know my premium date"
+        },
+        {
+          "text": "my next due date"
+        },
+        {
+          "text": "premium date"
+        },
+        {
+          "text": "premium due date"
+        },
+        {
+          "text": "premium next due date"
+        },
+        {
+          "text": "What is my premium date?"
+        },
+        {
+          "text": "When is my next premium due date?"
+        }
+      ],
+      "description": "This intent is to detect premium date enquiries"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "otp_input",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "otp input",
+          "patterns": [
+            "(\\d{4})"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "phone_no",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "phone_no",
+          "patterns": [
+            "([+]\\d{12})"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "policy_no",
+      "values": [
+        {
+          "type": "patterns",
+          "value": "policyNumber",
+          "patterns": [
+            "([a-z A-Z][a-z A-Z][a-z A-Z]\\d{8})",
+            "([a-z A-Z][a-z A-Z][a-z A-Z]\\d{7})"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "sys-number",
+      "values": []
+    }
+  ],
+  "metadata": {
+    "api_version": {
+      "major_version": "v2",
+      "minor_version": "2018-11-08"
+    },
+    "from-sample": true
+  },
+  "webhooks": [
+    {
+      "url": "https://eu-gb.functions.appdomain.cloud/api/v1/web/manoj.jahgirdar%40in.ibm.com_dev/default/OTP%20Auth.json",
+      "name": "main_webhook",
+      "headers": []
+    }
+  ],
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "node_7_1610451493235",
+      "disambiguation_opt_out": true
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1613989815937",
+      "context": {
+        "otp_input": "@otp_input"
+      },
+      "conditions": "@otp_input",
+      "event_name": "input",
+      "dialog_node": "handler_3_1613989815937"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_2_1614240060237",
+      "context": {
+        "phoneNo": "@phone_no"
+      },
+      "conditions": "@phone_no",
+      "event_name": "input",
+      "dialog_node": "handler_3_1614240060237"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "I did not get that. Please provide your policy number"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_2_1613989815937",
+      "event_name": "focus",
+      "dialog_node": "handler_4_1613989815937",
+      "previous_sibling": "handler_3_1613989815937"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "I did not get that. Please provide your policy number"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_2_1614240060237",
+      "event_name": "focus",
+      "dialog_node": "handler_4_1614240060237",
+      "previous_sibling": "handler_3_1614240060237"
+    },
+    {
+      "type": "event_handler",
+      "output": {
+        "text": {
+          "values": [
+            "I did not get that. Please provide your policy number"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "slot_3_1610448659375",
+      "event_name": "focus",
+      "dialog_node": "handler_8_1610448659388",
+      "previous_sibling": "handler_9_1610448659388"
+    },
+    {
+      "type": "event_handler",
+      "output": {},
+      "parent": "slot_3_1610448659375",
+      "context": {
+        "policyNumber": "@policy_no"
+      },
+      "conditions": "@policy_no",
+      "event_name": "input",
+      "dialog_node": "handler_9_1610448659388"
+    },
+    {
+      "type": "standard",
+      "title": "Validate OTP",
+      "output": {},
+      "parent": "node_2_1613991283859",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "otp": "<? input.text ?>",
+            "phoneNo": "$phoneNo"
+          },
+          "result_variable": "webhook_result_10"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@otp_input && @sys-number",
+      "dialog_node": "node_1_1613989815936",
+      "previous_sibling": "node_1_1614240060236"
+    },
+    {
+      "type": "standard",
+      "title": "Premium Amount Enquiry",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#premium_amount",
+      "dialog_node": "node_1_1614017937669",
+      "previous_sibling": "node_3_1613993095727"
+    },
+    {
+      "type": "frame",
+      "title": "Check Phone Number",
+      "output": {},
+      "parent": "node_2_1613991283859",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "phoneNo": "<? input.text ?>"
+          },
+          "result_variable": "webhook_result_1"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@sys-number && @phone_no",
+      "dialog_node": "node_1_1614240060236",
+      "previous_sibling": "node_5_1610446249872"
+    },
+    {
+      "type": "folder",
+      "title": "Authentication",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_2_1613991283859",
+      "previous_sibling": "node_3_1614018890023"
+    },
+    {
+      "type": "standard",
+      "title": "Show Premium due date",
+      "parent": "node_9_1613990931933",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "enquiryType": "$enquiryType",
+            "policyNumber": "$policyNo"
+          },
+          "result_variable": "webhook_result_3"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1614239592308"
+      },
+      "conditions": "$isAuthenticated == true && $policyNo &&  $enquiryType == \"premium_date\"",
+      "dialog_node": "node_2_1614018673122",
+      "previous_sibling": "node_4_1614019298214"
+    },
+    {
+      "type": "standard",
+      "title": "Restart",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Can I help you with anything else?"
+              },
+              {
+                "text": "Do you need help with anything else?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "random"
+          }
+        ]
+      },
+      "dialog_node": "node_2_1614239592308",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Show Policy Number",
+      "parent": "node_9_1613990931933",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {},
+          "result_variable": "webhook_result_4"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "",
+      "dialog_node": "node_3_1613990883192",
+      "previous_sibling": "node_4_1614235144933"
+    },
+    {
+      "type": "standard",
+      "title": "Premium Due Date Enquiry",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#premium_date",
+      "dialog_node": "node_3_1613993095727",
+      "previous_sibling": "node_2_1614239592308"
+    },
+    {
+      "type": "standard",
+      "title": "Forgot Policy Number",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "#forgot_policy_number || #policy_number",
+      "dialog_node": "node_3_1614018890023",
+      "previous_sibling": "node_1_1614017937669"
+    },
+    {
+      "type": "standard",
+      "title": "Show Premium Amount",
+      "parent": "node_9_1613990931933",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "enquiryType": "$enquiryType",
+            "policyNumber": "$policyNo"
+          },
+          "result_variable": "webhook_result_2"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1614239592308"
+      },
+      "conditions": "$isAuthenticated == true && $policyNo &&  $enquiryType == \"premium_amount\"",
+      "dialog_node": "node_4_1614019298214",
+      "previous_sibling": "node_3_1613990883192"
+    },
+    {
+      "type": "standard",
+      "title": "Query Selector",
+      "parent": "node_9_1613990931933",
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "$isAuthenticated == true",
+      "dialog_node": "node_4_1614235144933"
+    },
+    {
+      "type": "frame",
+      "title": "Check Policy Number",
+      "parent": "node_2_1613991283859",
+      "actions": [
+        {
+          "name": "main_webhook",
+          "type": "webhook",
+          "parameters": {
+            "policyNumber": "<? input.text ?>"
+          },
+          "result_variable": "webhook_result_1"
+        }
+      ],
+      "metadata": {
+        "_customization": {
+          "mcr": true
+        }
+      },
+      "conditions": "@policy_no",
+      "dialog_node": "node_5_1610446249872"
+    },
+    {
+      "type": "standard",
+      "title": "General Insurance",
+      "conditions": "#General_Insurance",
+      "dialog_node": "node_7_1610451493235",
+      "previous_sibling": "node_9_1613990931933"
+    },
+    {
+      "type": "folder",
+      "title": "Fetch User Data",
+      "digress_in": "does_not_return",
+      "dialog_node": "node_9_1613990931933",
+      "previous_sibling": "node_2_1613991283859"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_4_1614235144933",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1614018673122"
+      },
+      "conditions": "$enquiryType == \"premium_date\"",
+      "dialog_node": "response_10_1614235347807",
+      "previous_sibling": "response_8_1614235287125"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_3_1613993095727",
+      "context": {
+        "enquiryType": "premium_date"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1614235144933"
+      },
+      "conditions": "$isAuthenticated",
+      "dialog_node": "response_10_1614237328465",
+      "previous_sibling": "response_2_1614237311307"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Certainly, I can help you with the Premium Amount Enquiry. Please enter your policy number."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1614017937669",
+      "context": {
+        "enquiryType": "premium_amount"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_5_1610446249872"
+      },
+      "conditions": "$isAuthenticated == false",
+      "dialog_node": "response_10_1614238294179"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "$webhook_result_1.message"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_5_1610446249872",
+      "context": {
+        "phoneNo": "$webhook_result_1.phoneNo",
+        "policyNo": "$webhook_result_1.policyNo",
+        "validPolicyNo": "$webhook_result_1.validPolicyNo"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_1_1613989815936"
+      },
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_1_1610449731659",
+      "previous_sibling": "response_4_1614193309080"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "You have entered an Invalid Policy Number. Please try again."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1610446249872",
+      "context": {
+        "policyTries": "<? $policyTries+1 ?>"
+      },
+      "conditions": "$webhook_result_1.validPolicyNo == false && $policyTries <2",
+      "dialog_node": "response_1_1614193602872"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Your Policy Number is $webhook_result_10.policyNo"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1613989815936",
+      "context": {
+        "policyNo": "$webhook_result_10.policyNo",
+        "isAuthenticated": "$webhook_result_10.authentication"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1614235144933"
+      },
+      "conditions": "$webhook_result_10.authentication == true && $otpTries < 2 && $forgotPolicyNo == true",
+      "dialog_node": "response_1_1614234855202",
+      "previous_sibling": "response_9_1615364070848"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "It looks like you don't remember your policy number, please enter your phone number prefixed with country code to continue.Example: +919740812345"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1614018890023",
+      "context": {
+        "forgotPolicyNo": true
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_1_1614240060236"
+      },
+      "conditions": "$isAuthenticated == false",
+      "dialog_node": "response_1_1614238650336"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "You have Exceeded maximum attempts."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1613989815936",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "conditions": "$otpTries >= 2",
+      "dialog_node": "response_2_1614196565924",
+      "previous_sibling": "response_5_1613989815937"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Your Premium Amount is $webhook_result_2.message"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_4_1614019298214",
+      "conditions": "$webhook_result_2",
+      "dialog_node": "response_2_1614235547788"
+    },
+    {
+      "type": "response_condition",
+      "parent": "node_4_1614019298214",
+      "conditions": "anything_else",
+      "dialog_node": "response_2_1614235548502",
+      "previous_sibling": "response_2_1614235547788"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Certainly, I can help you with the Premium Date Enquiry. Please enter your policy number."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_3_1613993095727",
+      "context": {
+        "enquiryType": "premium_date"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_5_1610446249872"
+      },
+      "conditions": "$isAuthenticated == false",
+      "dialog_node": "response_2_1614237311307"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Your Policy Number is: $webhook_result_4.message"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_3_1613990883192",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1614235144933"
+      },
+      "conditions": "$webhook_result_4",
+      "dialog_node": "response_2_1614239044795"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_4_1614235144933",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_3_1613990883192"
+      },
+      "conditions": "$enquiryType == \"policy_no\"",
+      "dialog_node": "response_3_1614238911461",
+      "previous_sibling": "response_10_1614235347807"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "You have exceeded the tries"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_5_1610446249872",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "conditions": "$policyTries >=2",
+      "dialog_node": "response_4_1614193309080",
+      "previous_sibling": "response_1_1614193602872"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Invalid OTP. Please try again."
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_1_1613989815936",
+      "context": {
+        "otpTries": "<? $otpTries + 1 ?>",
+        "isAuthenticated": "$webhook_result_10.authentication"
+      },
+      "conditions": "$webhook_result_10.authentication == false && $otpTries < 2",
+      "dialog_node": "response_5_1613989815937"
+    },
+    {
+      "type": "response_condition",
+      "parent": "node_3_1613990883192",
+      "conditions": "anything_else",
+      "dialog_node": "response_5_1614239045328",
+      "previous_sibling": "response_2_1614239044795"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "You have entered an Invalid Phone Number. Please try again."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1614240060236",
+      "context": {
+        "policyTries": "<? $policyTries+1 ?>"
+      },
+      "conditions": "$webhook_result_1.validPhoneNo == false && $policyTries <2",
+      "dialog_node": "response_5_1614240060237"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_4_1614235144933",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_2_1614239592308"
+      },
+      "conditions": "$enquiryType == \"\"",
+      "dialog_node": "response_5_1615370299474",
+      "previous_sibling": "response_3_1614238911461"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "ERROR"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_1_1613989815936",
+      "conditions": "anything_else",
+      "dialog_node": "response_6_1613989815937",
+      "previous_sibling": "response_1_1614234855202"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "Your next premium due date is $webhook_result_3.message"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_2_1614018673122",
+      "conditions": "$webhook_result_3",
+      "dialog_node": "response_6_1614235664000"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_1_1614017937669",
+      "context": {
+        "enquiryType": "premium_amount"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1614235144933"
+      },
+      "conditions": "$isAuthenticated",
+      "dialog_node": "response_6_1614238413457",
+      "previous_sibling": "response_10_1614238294179"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_3_1614018890023",
+      "context": {
+        "forgotPolicyNo": true
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_3_1613990883192"
+      },
+      "conditions": "$isAuthenticated",
+      "dialog_node": "response_6_1614238662199",
+      "previous_sibling": "response_1_1614238650336"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "You have exceeded the tries"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "node_1_1614240060236",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "Welcome"
+      },
+      "conditions": "$phoneTries >=2",
+      "dialog_node": "response_6_1614240060237",
+      "previous_sibling": "response_5_1614240060237"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "ERROR"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_5_1610446249872",
+      "conditions": "anything_else",
+      "dialog_node": "response_7_1610449732364",
+      "previous_sibling": "response_1_1610449731659"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "$webhook_result_1.message"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_1_1614240060236",
+      "context": {
+        "phoneNo": "$webhook_result_1.phoneNo",
+        "policyNo": "$webhook_result_1.policyNo",
+        "validPolicyNo": "$webhook_result_1.validPolicyNo"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "user_input",
+        "dialog_node": "node_1_1613989815936"
+      },
+      "conditions": "$webhook_result_1",
+      "dialog_node": "response_7_1614240060237",
+      "previous_sibling": "response_6_1614240060237"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_4_1614235144933",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1614019298214"
+      },
+      "conditions": "$enquiryType == \"premium_amount\"",
+      "dialog_node": "response_8_1614235287125"
+    },
+    {
+      "type": "response_condition",
+      "parent": "node_2_1614018673122",
+      "conditions": "anything_else",
+      "dialog_node": "response_8_1614235664707",
+      "previous_sibling": "response_6_1614235664000"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "text": {
+          "values": [
+            "ERROR"
+          ],
+          "selection_policy": "sequential"
+        }
+      },
+      "parent": "node_1_1614240060236",
+      "conditions": "anything_else",
+      "dialog_node": "response_8_1614240060237",
+      "previous_sibling": "response_7_1614240060237"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_1_1613989815936",
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_3_1613990883192"
+      },
+      "conditions": "$forgotPolicyNo == true",
+      "dialog_node": "response_9_1614240659073",
+      "previous_sibling": "response_6_1613989815937"
+    },
+    {
+      "type": "response_condition",
+      "output": {
+        "generic": []
+      },
+      "parent": "node_1_1613989815936",
+      "context": {
+        "isAuthenticated": "$webhook_result_10.authentication"
+      },
+      "next_step": {
+        "behavior": "jump_to",
+        "selector": "body",
+        "dialog_node": "node_4_1614235144933"
+      },
+      "conditions": "$webhook_result_10.authentication == true && $otpTries < 2 && $forgotPolicyNo == false",
+      "dialog_node": "response_9_1615364070848",
+      "previous_sibling": "response_2_1614196565924"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1613989815936",
+      "variable": "$otp_input",
+      "dialog_node": "slot_2_1613989815937",
+      "previous_sibling": "response_9_1614240659073"
+    },
+    {
+      "type": "slot",
+      "output": {},
+      "parent": "node_1_1614240060236",
+      "variable": "$phoneNo",
+      "dialog_node": "slot_2_1614240060237",
+      "previous_sibling": "response_8_1614240060237"
+    },
+    {
+      "type": "slot",
+      "parent": "node_5_1610446249872",
+      "variable": "$policyNumber",
+      "dialog_node": "slot_3_1610448659375",
+      "previous_sibling": "response_7_1610449732364"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Hello. How can I help you?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "context": {
+        "phoneNo": 0,
+        "otpTries": 0,
+        "policyNo": "",
+        "enquiryType": "",
+        "policyTries": 0,
+        "validPolicyNo": "",
+        "forgotPolicyNo": false,
+        "isAuthenticated": false
+      },
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "counterexamples": [],
+  "system_settings": {
+    "off_topic": {
+      "enabled": true
+    },
+    "disambiguation": {
+      "prompt": "Did you mean:",
+      "enabled": true,
+      "randomize": true,
+      "max_suggestions": 5,
+      "suggestion_text_policy": "title",
+      "none_of_the_above_prompt": "None of the above"
+    },
+    "system_entities": {
+      "enabled": true
+    },
+    "human_agent_assist": {
+      "prompt": "Did you mean:"
+    },
+    "intent_classification": {
+      "training_backend_version": "v2"
+    },
+    "spelling_auto_correct": true
+  },
+  "learning_opt_out": false,
+  "name": "OTP Authentication New",
+  "language": "en",
+  "description": ""
+}

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authenticate Watson Assistant</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://unpkg.com/carbon-components/scripts/carbon-components.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/carbon-components/css/carbon-components.min.css">
+    <link rel="stylesheet" href="./../static/css/style.css">
+</head>
+
+<body>
+    <header class="bx--header" role="banner" aria-label="IBM" data-header>
+        <a class="bx--header__name" href="javascript:void(0)" title="">
+            <span class="bx--header__name--prefix">
+                Authenticate your chatbot
+                &nbsp;
+            </span>
+            Web App
+        </a>
+
+    </header>
+
+    <div class="custom-spacing">
+        <div class="bx--grid">
+            <div class="bx--row">
+                <div class="bx--col-lg-12">
+                    <div class="outside">
+                        <div class="inside">
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                            <h2>Authenticate Watson Assistant Web Application</h2>
+                            <br>
+                            <br>
+
+                            <div>
+                                <h5>Add Watson Assistant service credentials to get started</h5>
+                                <br>
+                                <p>If you have created a Watson Assistant service on IBM Cloud, enter the required credentials here.
+                                </p>
+                                <br>
+                                <button class="bx--btn bx--btn--primary" type="button"
+                                    data-modal-target="#modal-twilio-credentials">
+                                    Add Credentials
+                                    <svg focusable="false" preserveAspectRatio="xMidYMid meet"
+                                        style="will-change: transform;" xmlns="http://www.w3.org/2000/svg"
+                                        class="bx--btn__icon" width="16" height="16" viewBox="0 0 16 16"
+                                        aria-hidden="true">
+                                        <path d="M9 7L9 3 7 3 7 7 3 7 3 9 7 9 7 13 9 13 9 9 13 9 13 7z"></path>
+                                    </svg>
+                                </button>
+                                <br>
+                                <br>
+                                
+                                <p><strong>Status: </strong> <code id="twilioStatus"></code></p>
+                                <br>
+                                <br>
+                                <p>If you have not created a Watson Assistant service, please create a service here: <a
+                                        href="https://cloud.ibm.com/catalog/services/watson-assistant">https://cloud.ibm.com/catalog/services/watson-assistant</a>.
+                                </p>
+                                <br>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- TWILIO MODAL START-->
+
+        <div data-modal id="modal-twilio-credentials" class="bx--modal" role="dialog" aria-modal="true"
+            aria-labelledby="modal-twilio-credentials-label" aria-describedby="modal-twilio-credentials-heading"
+            tabindex="-1">
+            <div class="bx--modal-container">
+                <div class="bx--modal-header">
+                    <p class="bx--modal-header__label bx--type-delta" id="modal-twilio-credentials-label">Step 1: Add Watson Assistant service credentials to the Application</p>
+                    <p class="bx--modal-header__heading bx--type-beta" id="modal-twilio-credentials-heading">Watson Assistant Credentials</p>
+                    <button class="bx--modal-close" type="button" data-modal-close aria-label="close modal">
+                        <svg focusable="false" preserveAspectRatio="xMidYMid meet" style="will-change: transform;"
+                            xmlns="http://www.w3.org/2000/svg" class="bx--modal-close__icon" width="16" height="16"
+                            viewBox="0 0 16 16" aria-hidden="true">
+                            <path d="M12 4.7L11.3 4 8 7.3 4.7 4 4 4.7 7.3 8 4 11.3 4.7 12 8 8.7 11.3 12 12 11.3 8.7 8z">
+                            </path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Note: Modals with content that scrolls, at any viewport, requires `tabindex="0"` on the `bx--modal-content` element -->
+
+                <div class="bx--modal-content bx--modal-content--with-form">
+                    <div class="bx--form-item">
+                        <label for="trial_number" class="bx--label">ASSISTANT ID</label>
+                        <input id="trial_number" type="text" class="bx--text-input" placeholder="Enter Assistant ID" data-modal-primary-focus>
+                    </div>
+                    <br>
+                    <div class="bx--form-item">
+                        <label for="account_sid" class="bx--label">ASSISTANT SERVICE URL</label>
+                        <input id="account_sid" type="text" class="bx--text-input" placeholder="Enter Assistant Service URL">
+                    </div>
+                    <br>
+                    <div class="bx--form-item">
+                        <label for="auth_token" class="bx--label">ASSISTANT IAM API KEY</label>
+                        <input id="auth_token" type="password" class="bx--text-input" placeholder="Enter Assistant API Key">
+                    </div>
+                    <br>
+                    <div class="bx--form-item">
+                        <label for="api_url" class="bx--label">CUSTOM APIs DEPLOYED URL</label>
+                        <input id="api_url" type="text" class="bx--text-input" placeholder="Enter Custom Deployed API URL">
+                    </div>
+                    <br>
+                </div>
+                <div class="bx--modal-content--overflow-indicator"></div>
+
+                <div class="bx--modal-footer">
+                    <button class="bx--btn bx--btn--secondary" type="button" data-modal-close>Cancel</button>
+                    <button class="bx--btn bx--btn--primary" id="twilio-cred-submit" type="button"
+                        data-modal-close>Submit</button>
+                </div>
+            </div>
+            <!-- Note: focusable span allows for focus wrap feature within Modals -->
+            <span tabindex="0"></span>
+        </div>
+
+        <!-- TWILIO MODAL END-->
+
+
+    </div>
+</body>
+
+<script>
+    const twilioCredSubmit = document.getElementById("twilio-cred-submit");
+    const twilioStatus = document.getElementById("twilioStatus");
+
+    twilioCredSubmit.onclick = () => storeCredentials();
+
+    const storeCredentials = async () => {
+        var url = '/storeWatsonCredentials';
+        var payload = {
+            assistant_id: document.getElementById('trial_number').value,
+            assistant_url: document.getElementById('account_sid').value,
+            assistant_key: document.getElementById('auth_token').value,
+            api_url: document.getElementById('api_url').value
+        }
+        // console.log(payload)
+
+        var options = {
+            headers: {
+               'Accept': 'application/json',
+               'Content-Type': 'application/json'
+            },
+            method: 'post',
+            body: JSON.stringify(payload)
+        }
+
+        console.log(options);
+
+        await fetch(url, options).then(async (response) => {
+            data = await response.json();
+            console.log(data);
+            getTwilioStatus();
+            window.location.replace(`http://${window.location.hostname}:${window.location.port}/`)
+            console.log(`http://${window.location.hostname}:${window.location.port}/`)
+        });
+    };
+
+    const getTwilioStatus = async () => {
+        await fetch('/getTwilioCredentials').then(async (response) => {
+            data = await response.json();
+            console.log(data);
+            twilioStatus.innerHTML = data.status;
+            if (data.status == "Configured"){
+                alert("Watson Assistant Credentials are configured!\nYou will be redirected to the home page.");
+                setTimeout(() => {
+                  window.location.replace(`http://${window.location.hostname}:${window.location.port}/`);
+                },3000);
+            } else {
+                twilioStatus.innerHTML = "Not Configured";
+            }
+            
+        });
+    };
+
+    const initPrint = async () => {
+        console.log('imported')
+    };
+</script>
+
+<script>
+    initPrint();
+    getTwilioStatus();
+</script>
+</html>

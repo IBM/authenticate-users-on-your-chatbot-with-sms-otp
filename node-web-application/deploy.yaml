@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: watson-auth-otp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: watson-auth-otp
+  template:
+    metadata:
+      labels:
+        app: watson-auth-otp
+    spec:
+      containers:
+      - name: watson-auth-otp
+        image: randomUser/watson-auth-otp:v1
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: watson-media-e-learning
+  labels:
+    app: watson-media-e-learning
+spec:
+  type: NodePort
+  ports:
+    - port: 8080
+      nodePort: 32423
+  selector:
+    app: watson-auth-otp
