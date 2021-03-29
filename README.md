@@ -15,17 +15,19 @@ When you have completed this code pattern, you will understand how to:
 
 ## Flow
 
-1. User registers themselves on the insurance portal
+This flow seems crowded. Can we not have the registration part in architecture (we can have it in code and demo). Or we can cover 1/2/3/4 all in one bullet point. Let's discuss this. 
+
+1. Users register portal
 2. User data is stored in the database
-3. The policy details are redirected to twilio
-4. Twilio sends an SMS to the user’s phone number with the policy details
-5. User asks confidential info related to the policy by entering the policy number
-6. The Query is sent to watson assistant
-7. Watson Assistant sends out the request to cloud functions
-8. Cloud function makes an API call to the custom API
-9. The user’s phone number is searched in the database and redirected to twilio
-10. Twilio sends an SMS with OTP valid for 5 mins to the user
-11. User enters the OTP
+3. The policy details are redirected to twilio (Why policy details are redirected to Twilio?)
+4. Twilio sends an SMS message to the user’s phone number with the policy details (Twilio doesn't send policy details. Our applications sends policy details via Twilio SMS service)
+5. User asks confidential info related to the policy by entering the policy number. User chats over chatbot. Might as for sensitive data for which authentication is needed.
+6. The query is sent to wWatson Assistant
+7. Watson Assistant sends out the request to cloud functions. Cloud function help calling apis from Watson Assistant itself. 
+8. Cloud function makes an API call to the custom API. Provide a sentence as to what this custom api does.
+9. The user’s phone number is searched in the database and redirected to twilio. Does custom API determine OTP is needed? If yes, that needs to be mentioned here. Also, searching of user in database won't be part of point 9. I will review rest of the steps when we talk.. we will have to have few steps at high level.
+10. Twilio sends an SMS with OTP valid for 5 mins to the user's mobile number
+11. User enters the OTP, in the chat application to authenticate himself/herself
 12. The OTP is sent to watson assistant
 13. Watson assistant sends out the OTP to cloud functions
 14. Cloud function makes an API call to the custom API with the user entered OTP
@@ -42,36 +44,38 @@ Coming Soon.
 
 # Steps
 
-1. [Clone the repo](#1-clone-the-repo).
-2. [Create Twilio service](#2-create-twilio-service).
-3. [Deploy Custom APIs on Cloud](#3-deploy-custom-apis-on-cloud).
-4. [Create a Cloud Function Action](#4-create-a-cloud-function-action).
-5. [Create Watson Assistant Services](#5-create-watson-assistant-services).
-6. [Import the Watson Assistant workspace](#6-import-the-watson-assistant-workspace).
-7. [Configure Watson Assistant with Cloud Function URL](#7-configure-watson-assistant-with-cloud-function-url).
-8. [Run the Web Application](#8-run-the-web-application).
+1. <Prerequisites steps is missing> (git, IBM Cloud account, IBM Cloud CLI)
+2. [Clone the repo](#1-clone-the-repo).
+3. [Create Twilio service](#2-create-twilio-service).
+4. [Deploy Custom APIs on Cloud](#3-deploy-custom-apis-on-cloud).
+5. [Create a Cloud Function Action](#4-create-a-cloud-function-action).
+6. [Create Watson Assistant Services](#5-create-watson-assistant-services).
+7. [Import the Watson Assistant workspace](#6-import-the-watson-assistant-workspace).
+8. [Configure Watson Assistant with Cloud Function URL](#7-configure-watson-assistant-with-cloud-function-url).
+9. [Run the Web Application](#8-run-the-web-application).
 
 ### 1. Clone the repo
 
-Clone the `authenticate-users-on-your-chatbot-with-sms-otp` repo locally. In a terminal, run:
+Clone the `authenticate-users-on-your-chatbot-with-sms-otp`<provide complete repo link> repo locally. In a terminal, run:
 
 ```bash
 git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp.git
 ```
+<Include git in pre-reqs>
 
 ### 2. Create Twilio service
 
-Twlio is a SaaS offering that provides APIs to make and receive calls or text messages. As there are no APIs from WhatsApp directly availabe to send and receive WhatsApp messages programmatically, you will learn how to use Twilio's messaging service APIs that provides gateway to communicate with WhatsApp programmatically. Lets start by creating a free Twilio service.
+Twlio is a SaaS offering that provides APIs to make and receive calls or text messages. As there are no APIs from WhatsApp directly availabe to send and receive WhatsApp messages programmatically, you will learn how to use Twilio's messaging service APIs that provides gateway to communicate with WhatsApp programmatically. Lets start by creating a free Twilio service.<Why are we talking about whatsapp here?>
 
 - Create a free Twilio service here: <https://www.twilio.com/try-twilio>.
 
-- Enter the your details to signup as shown.
+- Enter the your details to signup as shown.<Details are not shown><Do we need this image?>
 
     ![twilio-signup](doc/source/images/createTwilio.png)
 
-- Once you create a twilio service, you will have to verify your email id as well as your phone number.
+- Once you create a twilio<Twilio maintain consistency in spelling> service, you will have to verify your email id as well as your phone number.
 
-- To verify your email id, visit your registered email id and you will see a mail from twilio with a verification link, go ahead and verify.
+- To verify your email id, visit your registered email id and you will see a mail from twilio with a verification link, go ahead and verify.How about this - You will receive verification link in the email provided during Twilio signup. Go ahead and verify your email id.
 
     ![](doc/source/images/verifyTwilio.png)
 
@@ -94,8 +98,8 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 - The final question asked to you would be **What do you want to do first?**, select **Skip to dashboard** to proceed.
 
     ![](doc/source/images/twilioWelcome4.png)
- 
-- You will need a twilio `Trial Number` to send messages through the OTP. Click on **Get a Trial Number** as shown.
+
+- You will need a twilio `Trial Number` to send messages(OTP). Click on **Get a Trial Number** as shown.
 
     ![](doc/source/images/twilio-credentials-from-twilio-console.png)
 
@@ -187,7 +191,7 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 
     ![](doc/source/images/screenshot.png)
 
-- Click on the **Add Twilio Credentials** button and enter the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN` copied in the previous step.
+- Click on the **Add Twilio Credentials** button and enter the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN` copied in the previous step.<<better to mention step number or provide section heading>>
 
     ![](doc/source/images/add-twilio.png)
 
@@ -198,7 +202,8 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 - At this point you will have successfully deployed and configured the custom APIs.
 
 ### 4. Create a Cloud Function Action
-- Login to IBM Cloud, and create a [Create a cloud function action](https://cloud.ibm.com/functions/create/action).
+- <It is better to give a brief explanation on why you are using cloud functions>
+- Login to IBM Cloud, and [Create a cloud function action](https://cloud.ibm.com/functions/create/action).
 * Enter a cloud function name and select Python 3.7 for runtime environment and press create.
 ![createCF](doc/source/images/createCF.png)
 
@@ -282,7 +287,7 @@ Twlio is a SaaS offering that provides APIs to make and receive calls or text me
 ![selectPolicy](doc/source/images/selectPolicy.png)
 * Enter your details and click **Submit.**
 ![buyPolicy](doc/source/images/buyPolicy.png)
-* After Successful registration you will see a success prompt and you will received the policy details on your registered mobile number.
+* After Successful registration you will see a success prompt and you will have received the policy details on your registered mobile number.
 ![success](doc/source/images/success.png)
 * You can now interact with chatbot and know your confidential information in a secure manner.
 ![chatFlow](doc/source/images/chatFlow.png)
@@ -307,3 +312,4 @@ example:
 This code pattern is licensed under the Apache License, Version 2. Separate third-party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1](https://developercertificate.org/) and the [Apache License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
 [Apache License FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+
