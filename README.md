@@ -2,7 +2,7 @@
 
 Chatbots are prevelent everywhere. Some conversations are confidential and hence chatbots have to verify authenticity of users. Sending an OTP via SMS is a popular way to identify a user. 
 
-In this code pattern we will provide steps to build a chatbot apllication that authenticates users through an SMS one time passcode (OTP). An insurance customer can use chatbot to get more information on his/her insurance policy. We will demonstate the usage of Watson Assistant, Cloud Functions and Custom APIs to build this application.
+In this code pattern we will provide steps to build a chatbot application that authenticates users through an SMS one time passcode (OTP). For example, a customer holding an insurance policy can use chatbot to get more information about his/her insurance policy. We will demonstate the usage of Watson Assistant, Cloud Functions and Custom APIs to build this application.
 
 When you have completed this code pattern, you will understand how to:
 
