@@ -15,7 +15,6 @@ When you have completed this code pattern, you will understand how to:
 
 ## Flow
 
-This flow seems crowded. Can we not have the registration part in architecture (we can have it in code and demo). Or we can cover 1/2/3/4 all in one bullet point. Let's discuss this. 
 
 1. User registers for a policy on the portal.
 2. User data is stored in the database and policy details are sent to user’s phone number in an SMS through Twilio Messaging API.
@@ -35,15 +34,17 @@ Coming Soon.
 <!-- [![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg) -->
 
 # Prerequisites
-1. git
-2. IBM Cloud Account
-3. IBM Cloud CLI
+1. [IBM Cloud Account]()
+2. [IBM Cloud CLI]()
+3. [OpenShift ROKS Cluster]()
+4. [OC CLI]()
+5. [Git CLI]()
 
 # Steps
 
 1. [Clone the repo](#1-clone-the-repo).
 2. [Create Twilio service](#2-create-twilio-service).
-3. [Deploy Custom APIs on Cloud](#3-deploy-custom-apis-on-cloud).
+3. [Deploy Custom APIs](#3-deploy-custom-apis).
 4. [Create a Cloud Function Action](#4-create-a-cloud-function-action).
 5. [Create Watson Assistant Services](#5-create-watson-assistant-services).
 6. [Import the Watson Assistant workspace](#6-import-the-watson-assistant-workspace).
@@ -65,14 +66,10 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 
 - Create a free Twilio service here: <https://www.twilio.com/try-twilio>.
 
-- Enter the your details on this page as prompted to signup.
-    ![twilio-signup](doc/source/images/createTwilio.png)
+>NOTE: - Once you create a Twilio service, you will have to verify your email id as well as your phone number.
 
-- Once you create a Twilio service, you will have to verify your email id as well as your phone number.
-
-- To verify your email id, visit your registered email id and you will see a mail from Twilio with a verification link, go ahead and verify.How about this - You will receive verification link in the email provided during Twilio signup. Go ahead and verify your email id.
-
-    ![](doc/source/images/verifyTwilio.png)
+>- You will receive verification link in the email provided during Twilio signup. Go ahead and verify your email id.
+![](doc/source/images/verifyTwilio.png)
 
 - Once email id is verified you will be prompted to enter your phone number, submit that and you will get an OTP on your registered number, enter that back to verify.
 
@@ -117,6 +114,89 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 - Now lets deploy the custom APIs and configure twilio credentials.
 
 ### 3. Deploy Custom APIs on Cloud
+
+In this code pattern, custom APIs are developed to perform various tasks such as:
+    - Store users data in a Database
+    - Search users phone number and send out an OTP
+    - Validate OTP and Authenticate users
+    - Query users data
+
+Custom APIs are developed in Python Flask and you can deploy it in OpenShift or IBM Cloud Foundry.
+
+<details><summary><b>Steps to Build and Deploy on OpenShift</b></summary>
+
+<b>Note:</b> If you want to deploy the Custom APIs without any modifications, you can skip the **Build** steps and directly follow the **Deploy** steps. If you want to make some modifications in the APIs and then deploy it then follow the **Build** step.
+
+
+#### Build
+> Note: Make sure you have docker cli installed and logged in to DockerHub
+
+- In cloned repo, navigate to `custom-apis-for-authentication/` directory and build the docker image. In terminal run:
+```bash
+$ docker build -t <your-docker-username>/otp-apis:v1 .
+```
+> Replace `<your-docker-username>` with your docker hub username
+
+- Once the docker image is built, deploy the docker image to Dockerhub. In terminal run:
+```bash
+$ docker push <your-docker-username>/otp-apis:v1
+```
+
+- At this point you have built the container image and successfully pushed to to a container repository dockerhub. 
+
+- Copy the image tag `<your-docker-username>/otp-apis:v1` and replace it on line no `18` in `deployment-scripts/api-deploy.yaml`
+
+<pre><code>spec:
+      containers:
+      - name: otp-apis
+        image:<b> < your-docker-username >/otp-apis:v1 </b>
+        ports:
+        - containerPort: 8080
+</code></pre>
+
+
+#### Deploy
+
+- Login to your OpenShift cluster, In terminal run:
+```bash
+$ oc login -u <username> -p <password>
+```
+
+- Alternatively you can also login with an auth token. Follow the [Step here](https://developer.ibm.com/tutorials/configure-a-red-hat-openshift-cluster-with-red-hat-marketplace/#4-connect-to-the-openshift-cluster-in-your-cli) to login through an auth token.
+
+- Once you have logged into OpenShift from your terminal, you can run the `oc apply` command to deploy the Application on OpenShift. In cloned repo, navigate to `deployment-scripts/` directory and in terminal run:
+```bash
+$ cd deployment-scripts/
+$ oc apply -f api-deploy.yaml
+```
+
+```
+deployment.apps/otp-apis created
+service/otp-apis-service created
+route.route.openshift.io/otp-apis-url created
+```
+
+- A deployment, service and a route will be created. To access the App, In terminal run:
+```bash
+$ oc get route -n default
+```
+
+```
+NAME           HOST/PORT                                                                                                           PATH   SERVICES           PORT   TERMINATION   WILDCARD
+otp-apis-url   otp-apis-url-default.xxx.us-south.containers.appdomain.cloud   /      otp-apis-service   8080                 None
+```
+
+- You will see the `PATH` for with service name `otp-apis-url`.
+
+>Example: http://otp-apis-url-default.xxx.us-south.containers.appdomain.cloud
+
+- At this point, you will have successfully deployed the Custom APIs on OpenShift. Now lets access it and see how it looks like.
+
+</details>
+
+<details><summary><b>Steps to Build and Deploy on IBM Public Cloud Foundry</b></summary>
+
+#### Build and Deploy
 
 - Before you proceed, make sure you have installed [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US) in your deployment machine.
 
@@ -178,11 +258,13 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 
 >Example: http://otp-api.xx-xx.mybluemix.net
 
-- At this point, you will have successfully deployed the framework on IBM Cloud. Now lets access it and see how it looks like.
+- At this point, you will have successfully deployed the Custom APIs on IBM Cloud. Now lets access it and see how it looks like.
+
+</details>
+
+Once you have deployed the Custom APIs, continue with the documentation:
 
 - Visit the `URL` in your browser to access the framework.
-
-    >Example: http://otp-api.xx-xx.mybluemix.net
 
     ![](doc/source/images/screenshot.png)
 
@@ -198,7 +280,7 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 
 ### 4. Create a Cloud Function Action
 
-Cloud Funtions is Functions-as-a-Service (FaaS) platform based on Apache OpenWhisk. As Watson Assistant can't interact with any external API, We will be using Cloud Function Actions to interact with our external database API and exchange data.
+IBM Cloud Function is a Serverless Architecture where in a user can write a snippet of code and run it as API's without worrying about deploying it. Through webhook we will be using Cloud Function Actions to interact with our external database API and exchange data.
 
 - Login to IBM Cloud, and [Create a cloud function action](https://cloud.ibm.com/functions/create/action).
 * Enter a cloud function name and select Python 3.7 for runtime environment and press create.
@@ -271,25 +353,115 @@ Cloud Funtions is Functions-as-a-Service (FaaS) platform based on Apache OpenWhi
 * Select Options>Webhooks from the left panel and paste the URL copied in [Step 4](#4-create-a-cloud-function-action) in the text box.
 ![enterWebhook](doc/source/images/enterWebhook.png)
 
-### 8. Run the Web Application
+### 8. Deploy and Run the Web Application
+
+<details><summary>Build and Deploy on OpenShift</summary>
+
+
+<b>Note:</b> If you want to deploy the Web Application without any modifications, you can skip the **Build** steps and directly follow the **Deploy** steps. If you want to make some modifications in the Application and deploy it follow the **Build** step.
+
+#### Build
+> Note: Make sure you have docker cli installed and logged in to DockerHub
+
+- In cloned repo, navigate to `node-web-application/` directory and build the docker image. In terminal run:
+```bash
+$ docker build -t <your-docker-username>/otp-webapp:v1 .
+```
+> Replace `<your-docker-username>` with your docker hub username
+
+- Once the docker image is built, deploy the docker image to Dockerhub. In terminal run:
+```bash
+$ docker push <your-docker-username>/otp-webapp:v1
+```
+
+- At this point you have built the container image and successfully pushed to to a container repository dockerhub. 
+
+- Copy the image tag `<your-docker-username>/otp-webapp:v1` and replace it on line no `18` in `deployment-scripts/webapp-deploy.yaml`
+
+<pre><code>spec:
+      containers:
+      - name: otp-webapp
+        image:<b> < your-docker-username >/otp-webapp:v1 </b>
+        ports:
+        - containerPort: 8080
+</code></pre>
+
+
+#### Deploy
+
+- Login to your OpenShift cluster, In terminal run:
+```bash
+$ oc login -u <username> -p <password>
+```
+
+- Alternatively you can also login with an auth token. Follow the [Step here](https://developer.ibm.com/tutorials/configure-a-red-hat-openshift-cluster-with-red-hat-marketplace/#4-connect-to-the-openshift-cluster-in-your-cli) to login through an auth token.
+
+- Once you have logged into OpenShift from your terminal, you can run the `oc apply` command to deploy the Application on OpenShift. In cloned repo, navigate to `deployment-scripts/` directory and in terminal run:
+```bash
+$ cd deployment-scripts/
+$ oc apply -f webapp-deploy.yaml
+```
+
+```
+deployment.apps/otp-webapp created
+service/otp-webapp-service created
+route.route.openshift.io/otp-webapp-url created
+```
+
+- A deployment, service and a route will be created. To access the App, In terminal run:
+```bash
+$ oc get route -n default
+```
+
+```
+NAME             HOST/PORT                                                                                                             PATH   SERVICES             PORT   TERMINATION   WILDCARD
+otp-apis-url     otp-apis-url-default.xxx.us-south.containers.appdomain.cloud     /      otp-apis-service     8080                 None
+otp-webapp-url   otp-webapp-url-default.xxx.us-south.containers.appdomain.cloud   /      otp-webapp-service   8080                 None
+```
+
+- You will see the `PATH` for with service name `otp-webapp-url`.
+
+>Example: http://otp-webapp-url-default.xxx.us-south.containers.appdomain.cloud
+
+- At this point, you will have successfully deployed the Web Application on OpenShift. Now lets access it and see how it looks like.
+
+</details>
+
+<details><summary>Deploy Locally</summary>
+
 * Open the repository in your terminal and navigate to `node-web-application` directory.
 * Start the app by running `npm install`, followed by `node server.js`.
-* Open at `localhost:8080` in your browser. As the authentication has not been done yet, you will be redirected to `/auth`.
-* Click Add Credentials and Enter the required credentials that you copied in [Step 6](#6-import-the-watson-assistant-workspace) and press **Submit**.
-![auth](doc/source/images/auth.png)
-* After successful authentication user will be redirected to the chatbot.
-* Click on New User to start using the app.
-![newUser](doc/source/images/newUser.png)
-* Select Any Policy you like and click **Buy Now.**
-![selectPolicy](doc/source/images/selectPolicy.png)
-* Enter your details and click **Submit.**
-![buyPolicy](doc/source/images/buyPolicy.png)
-* After Successful registration you will see a success prompt and you will have received the policy details on your registered mobile number.
-![success](doc/source/images/success.png)
-* You can now interact with chatbot and know your confidential information in a secure manner.
-![chatFlow](doc/source/images/chatFlow.png)
-
 > Note: The server host can be changed as required in the server.js file, and `PORT` can be set in the `.env` file.
+
+- At this point, you will have successfully deployed the Web Application locally. Now lets access it and see how it looks like.
+
+</details>
+
+Once you have deployed the Web Application, continue with the documentation:
+
+- Visit the OpenShift `otp-webapp-url` route or `localhost:8080` if you have deployed locally.
+
+- As the authentication has not been done yet, you will be redirected to `/auth`.
+
+- Click Add Credentials and Enter the required credentials that you copied in [Step 6](#6-import-the-watson-assistant-workspace) and press **Submit**.
+![auth](doc/source/images/auth.png)
+
+- After successful authentication user will be redirected to the chatbot.
+
+- Click on New User to start using the app.
+![newUser](doc/source/images/newUser.png)
+
+- Select Any Policy you like and click **Buy Now.**
+![selectPolicy](doc/source/images/selectPolicy.png)
+
+- Enter your details and click **Submit.**
+![buyPolicy](doc/source/images/buyPolicy.png)
+
+- After Successful registration you will see a success prompt and you will have received the policy details on your registered mobile number.
+![success](doc/source/images/success.png)
+
+- You can now interact with chatbot and know your confidential information in a secure manner.
+![chatFlow](doc/source/images/chatFlow.png)
 
 ## Questions
 If you have any questions or issues you can create a new [issue here](https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp/pulls).
