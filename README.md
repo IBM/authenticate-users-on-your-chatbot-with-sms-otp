@@ -359,7 +359,7 @@ IBM Cloud Function is a Serverless Architecture where in a user can write a snip
 
 ### 8. Deploy and Run the Web Application
 
-<details><summary>Build and Deploy on OpenShift</summary>
+<details><summary><b>Build and Deploy on OpenShift</b></summary>
 
 
 <b>Note:</b> If you want to deploy the Web Application without any modifications, you can skip the **Build** steps and directly follow the **Deploy** steps. If you want to make some modifications in the Application and deploy it follow the **Build** step.
@@ -431,10 +431,23 @@ otp-webapp-url   otp-webapp-url-default.xxx.us-south.containers.appdomain.cloud 
 
 </details>
 
-<details><summary>Deploy Locally</summary>
+<details><summary></b>Build and Deploy Locally</b></summary>
 
-* Open the repository in your terminal and navigate to `node-web-application` directory.
-* Start the app by running `npm install`, followed by `node server.js`.
+#### Build
+- Open the repository in your terminal and navigate to `node-web-application` directory.
+
+- In terminal, run the following to build the Application.
+```bash
+$ npm install
+```
+
+#### Deploy
+
+- In terminal, run the following command to deploy and start the server.
+```bash
+$ node server.js
+```
+
 > Note: The server host can be changed as required in the server.js file, and `PORT` can be set in the `.env` file.
 
 - At this point, you will have successfully deployed the Web Application locally. Now lets access it and see how it looks like.
