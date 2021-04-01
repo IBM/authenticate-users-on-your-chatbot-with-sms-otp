@@ -1,0 +1,51 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: otp-apis
+  labels:
+    app: flask
+spec:
+  selector:
+    matchLabels:
+      app: flask
+  template:
+    metadata:
+      labels:
+        app: flask
+    spec:
+      containers:
+      - name: otp-apis
+        image: manojjahgirdar/otp-apis:v6
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: otp-apis-service
+spec:
+  selector:
+    app: flask
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 32020
+  type: NodePort
+
+---
+
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: otp-apis-url
+  namespace: default
+spec:
+  path: /
+  to:
+    kind: Service
+    name: otp-apis-service
+  port:
+    targetPort: 8080

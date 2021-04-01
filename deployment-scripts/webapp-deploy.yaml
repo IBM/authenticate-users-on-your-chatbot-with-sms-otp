@@ -1,0 +1,53 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: otp-webapp
+  labels:
+    app: nodejs
+spec:
+  selector:
+    matchLabels:
+      app: nodejs
+  template:
+    metadata:
+      labels:
+        app: nodejs
+    spec:
+      containers:
+      - name: otp-webapp
+        image: manojjahgirdar/otp-webapp:v7
+        ports:
+        - containerPort: 8080
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: otp-webapp-service
+spec:
+  selector:
+    app: nodejs
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+    nodePort: 32000
+  type: NodePort
+
+---
+
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: otp-webapp-url
+  namespace: default
+spec:
+  path: /
+  to:
+    kind: Service
+    name: otp-webapp-service
+  port:
+    targetPort: 8080
+
+
