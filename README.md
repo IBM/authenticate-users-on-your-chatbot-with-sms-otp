@@ -77,6 +77,8 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 
 - On successful verification you should see a welcome greeting message, additionally you will see a question **Do you write code?**, select **Yes** to proceed.
 
+- All the below steps are changed now
+
     ![](doc/source/images/twilioWelcome.png)
 
 - The second question asked to you would be **What is your preferred language?**, select **Python** to proceed.
@@ -121,9 +123,9 @@ Twilio trial number doesn't send messages to your phone number if your phone num
 
 In this code pattern, custom APIs are developed to perform various tasks such as:
     - Store users data in a Database
-    - Search users phone number and send out an OTP
-    - Validate OTP and Authenticate users
-    - Query users data
+        - Search users phone number and send out an OTP
+        - Validate OTP and Authenticate users
+        - Query users data
 
 Custom APIs are developed in Python Flask and you can deploy it in OpenShift or IBM Cloud Foundry.
 
@@ -236,20 +238,21 @@ otp-apis-url   otp-apis-url-default.xxx.us-south.containers.appdomain.cloud   / 
 - On Successful deployment of the application you will see something similar on your terminal as shown.
 
     <pre><code>Invoking 'cf push'...
-
-    Pushing from manifest to org manoj.jahgirdar@in.ibm.com / space dev as manoj.jahgirdar@in.ibm.com...
-
-    ...
-
-    Waiting for app to start...
-
+Shown below is a sample output
+    
+Pushing from manifest to org manoj.jahgirdar@in.ibm.com<Do not reveal your ibm id here> / space dev as manoj.jahgirdar@in.ibm.com...
+    
+...
+    
+Waiting for app to start...
+    
     name:              otp-api
     requested state:   started
     routes:            <b>otp-api.xx-xx.mybluemix.net </b>
     last uploaded:     Sat 16 May 18:05:16 IST 2020
     stack:             cflinuxfs3
-    buildpacks:        python
-
+buildpacks:        python
+    
     type:            web
     instances:       1/1
     memory usage:    512M
@@ -258,7 +261,8 @@ otp-apis-url   otp-apis-url-default.xxx.us-south.containers.appdomain.cloud   / 
     #0   <b>running</b>   2020-05-16T12:36:15Z   12.6%   116.5M of 512M   796.2M of 1
     </code></pre>
 
-* Once the app is deployed you can visit the `routes` to launch the application.
+* Once the app is deployed you can visit the `routes` to launch the application. <mention how to get to the routes.. may be from output of above command?>
+* Make a note of this url, as `APIEndPoint` to be used in step4
 
 >Example: http://otp-api.xx-xx.mybluemix.net
 
@@ -272,7 +276,7 @@ Once you have deployed the Custom APIs, continue with the documentation:
 
     ![](doc/source/images/screenshot.png)
 
-- Click on the **Add Twilio Credentials** button and enter the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN` copied in [step 2](#2-create-twilio-service).
+- Click on the **Add Twilio Credentials** button and enter the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN` copied in [step 2](#2-create-twilio-service). and click Submit
 
     ![](doc/source/images/add-twilio.png)
 
@@ -287,50 +291,51 @@ Once you have deployed the Custom APIs, continue with the documentation:
 IBM Cloud Function is a Serverless Architecture where in a user can write a snippet of code and run it as API's without worrying about deploying it. Through webhook we will be using Cloud Function Actions to interact with our external database API and exchange data.
 
 - Login to IBM Cloud, and [Create a cloud function action](https://cloud.ibm.com/functions/create/action).
-* Enter a cloud function name and select Python 3.7 for runtime environment and press create.
+- Click "Start Creating " button. Select "Action".
+* Enter a cloud function name and select Python 3.7 for runtime environment and click `create`.
 ![createCF](doc/source/images/createCF.png)
 
 * You will see a hello world code in the canvas
 ![helloWorld](doc/source/images/helloWorld.png)
 
-* Copy the code from [here](cloud-function-action/otp-auth.py) and replace it in the canvas as shown.
+* Copy the code from [here](cloud-function-action/otp-auth.py) and replace it in the canvas as shown. In 2-3 sentences explain what this code does.
 ![cloudCode](doc/source/images/cloudCode.png)
 
-* Replace the `APIENDPOINT` in the code with the URL that you copied to your notepad in [Step 5](#5-deploy-custom-apis-on-cloud).
->Example: APIENDPOINT = "http://158.123.197.53:32000"
+* Replace the `APIENDPOINT` in the code with the URL that you copied to your notepad in [Step 5](#5-deploy-custom-apis-on-cloud). Step3?
+>Example: APIENDPOINT = "http://158.123.197.53:32000" This url to be similar to route one (without IP). Make a mention that it should be http in case of openshift deployment.
 
-* Click on **Endpoints** on the left panel and select **Enable as Web Action** finally click on **Save**.
+* Click on **Endpoints** on the left panel and select **Enable as Web Action**. Click on **Save**.
 ![cfEnable](doc/source/images/cfEnable.png)
 
-* Finally Copy the Public Link which is displayed.
+* Copy the Public Link which is displayed.
 ![cfCopy](doc/source/images/cfCopy.png)
 >NOTE: The Above URL should end with .json if it is not ending with .json please append .json at the end of the URL. 
 **NOTE: This URL is Important, please save it in any notepad since it will be used in subsequent steps.**
 
 ### 5. Create Watson Assistant services
 
-* Create a [Watson Assistant](https://cloud.ibm.com/catalog/services/watson-assistant) service.
+* Create a [Watson Assistant](https://cloud.ibm.com/catalog/services/watson-assistant) service. Provide instructions to select region, lite plan and click create. Wait for a few seconds for an instance to be provisioned. Because this code pattern is generic and has wide applicability, expect beginners also to execute this code pattern.
 ![createWA](doc/source/images/createWA.png)
 
 * Click **Launch Watson Assistant** to launch console.
 ![launchWA](doc/source/images/launchWA.png)
 
-### 6. Import the Watson Assistant workspace
+### 6. Import Watson Assistant workspace
 * Inside Watson Assistant Console click **Skills icon** on the left panel and then click **Create skill**.
 ![createSkill](doc/source/images/createSkill.png)
 
 * Select **Dialog Skill** and click next.
 ![dialogSkill](doc/source/images/dialogSkill.png)
 
-* Select **Upload** and choose `watson-assistant-skills/skill-OTP-Authentication-New.json` from the project directory and click **Upload.**
+* Select `Upload Skill ` tab. Drag and drop (or click and browse) the file `watson-assistant-skills/skill-OTP-Authentication-New.json` from the project directory and click **Upload.**
 ![uploadSkill](doc/source/images/uploadSkill.png)
 
 * After this you will see that a new Watson Assistant skill has been created.
 
-* Click **Assistant icon** from left panel and click **Create Assistant.**
+* Click **Assistant icon** from left panel and click **Create Assistant.** In below images, we can cut images to remove the blank space from images.
 ![createAssistant](doc/source/images/createAssistant.png)
 
-* Enter a Name and description for the Assistant and click **Create.**
+* Enter a Name and description(optional) for the Assistant and click **Create.**
 ![nameAssist](doc/source/images/nameAssist.png)
 
 * Click **Add dialog Skill.**
@@ -347,15 +352,14 @@ IBM Cloud Function is a Serverless Architecture where in a user can write a snip
 
 * Copy the Assistant ID, Assistant URL and the API key and store them in a file as they will be used in subsequent steps.
 ![copyCreds](doc/source/images/copyCreds.png)
->Note: Copy only the hostname in Assiatant URL and not the complete path. eg-
+>Note: From the Assistant URL, copy the url only till the end of hostname part and not the complete path. e.g 
 `https://api.eu-gb.assistant.watson.cloud.ibm.com/`
 
 ### 7. Configure Watson Assistant with Cloud Function URL
 * Go to the Watson Assistant skills and select **OTP Authentication New**
 ![chooseSkill](doc/source/images/chooseSkill.png)
-
-* Select Options>Webhooks from the left panel and paste the URL copied in [Step 4](#4-create-a-cloud-function-action) in the text box.
-![enterWebhook](doc/source/images/enterWebhook.png)
+* Select Options -> Webhooks from the left panel and paste the URL(ending in .json) (specify ) copied in [Step 4](#4-create-a-cloud-function-action) in the text box. (you mean step3?).. Better to give a name to url.. like application_url, assistant_url. This gets saved automatically?
+* ![enterWebhook](doc/source/images/enterWebhook.png)
 
 ### 8. Deploy and Run the Web Application
 
@@ -460,7 +464,7 @@ Once you have deployed the Web Application, continue with the documentation:
 
 - As the authentication has not been done yet, you will be redirected to `/auth`.
 
-- Click Add Credentials and Enter the required credentials that you copied in [Step 6](#6-import-the-watson-assistant-workspace) and press **Submit**.
+- Click Add Credentials and Enter the required credentials that you copied in [Step 6](#6-import-the-watson-assistant-workspace) and press **Submit**. (Custom API url is copied in a different step. mention which step.)
 ![auth](doc/source/images/auth.png)
 
 - After successful authentication user will be redirected to the chatbot.
@@ -471,16 +475,21 @@ Once you have deployed the Web Application, continue with the documentation:
 - Select Any Policy you like and click **Buy Now.**
 ![selectPolicy](doc/source/images/selectPolicy.png)
 
-- Enter your details and click **Submit.**
+- Enter your details and click **Submit.** (in hints, provide something like Enter name.. instead of John Doe.. similarly say enter mobile no instead of providing some mobile no). Say, this should be the same no that is registered in Twilio. 
 ![buyPolicy](doc/source/images/buyPolicy.png)
 
-- After Successful registration you will see a success prompt and you will have received the policy details on your registered mobile number.
+- After Successful registration you will see a success prompt and you will have received the policy details on your registered mobile number. Will the SMS screenshot mislead users? Better to remove that from screenshot?
 ![success](doc/source/images/success.png)
 
 - You can now interact with chatbot and know your confidential information in a secure manner.
 ![chatFlow](doc/source/images/chatFlow.png)
 
+I am getting an error here.
+
+End with a summary. Something like what we started to do and what we achieved.
+
 ## Questions
+
 If you have any questions or issues you can create a new [issue here](https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp/pulls).
 
 Pull requests are very welcome! Make sure your patches are well tested.
