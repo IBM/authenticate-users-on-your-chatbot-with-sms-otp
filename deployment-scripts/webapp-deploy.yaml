@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: otp-webapp
-        image: manojjahgirdar/otp-webapp:v8
+        image: manojjahgirdar/otp-webapp:v10
         ports:
         - containerPort: 8080
 
