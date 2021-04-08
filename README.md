@@ -44,9 +44,9 @@ Coming Soon.
 
 1. [Clone the repo](#1-clone-the-repo)
 2. [Setup Twilio messaging service](#2-setup-twilio-messaging-service)
-    - 2.1. [Create Twilio service]()
-    - 2.2. [Create Twilio Trial Number]()
-    - 2.3. [Verified Caller IDs]()
+    - 2.1. [Create Twilio service](#21-create-twilio-service)
+    - 2.2. [Create Twilio Trial Number](#22-create-twilio-trial-number)
+    - 2.3. [Verified Caller IDs](#23-verified-caller-ids)
 3. [Deploy Custom APIs](#3-deploy-custom-apis)
 4. [Create a Cloud Function Action](#4-create-a-cloud-function-action)
 5. [Create Watson Assistant Services](#5-create-watson-assistant-services)
