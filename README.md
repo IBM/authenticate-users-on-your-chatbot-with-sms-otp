@@ -315,7 +315,8 @@ IBM Cloud Function is a Serverless Architecture where in a user can write a snip
 * This code acts as an intermediater between Watson Assistant and the Custom APIs. Any API calls requested by Watson Assistant will go through this Cloud Function code, and response will be returned back to Watson Assistant.
 
 * Replace the `APIENDPOINT` in the code with the URL that you copied to your notepad in [Step 3](#3-deploy-custom-apis).
->Example: APIENDPOINT = "http://158.123.197.53:32000" This url to be similar to route one (without IP). Make sure `http://` is added in case of openshift deployment.
+
+>Example: http://otp-api.xx-xx.mybluemix.net if deployed on IBM Cloud Foundry, http://otp-apis-url-default.xxx.us-south.containers.appdomain.cloud if deployed on OpenShift
 
 * Click on **Endpoints** on the left panel and select **Enable as Web Action**. Click on **Save**.
 ![cfEnable](doc/source/images/cfEnable.png)
