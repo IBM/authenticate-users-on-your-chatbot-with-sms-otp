@@ -20,6 +20,8 @@ Retrive confidential data of users through chatbot by authenticating users on ch
 
 ### Video Link
 
+- https://www.youtube.com/watch?v=KVAcdJTe8Xs
+- 
 # Summary
 
 In this code pattern you will learn how to authenticate users on your chatbot with an SMS one-time passcode
