@@ -52,7 +52,7 @@ Coming Soon.
 5. [Create Watson Assistant Services](#5-create-watson-assistant-services)
 6. [Import Watson Assistant workspace](#6-import-watson-assistant-workspace)
 7. [Configure Watson Assistant with Cloud Function URL](#7-configure-watson-assistant-with-cloud-function-url)
-8. [Run the Web Application](#8-run-the-web-application)
+8. [Deploy and Run the Web Application](#8-deploy-and-run-the-web-application)
 
 ### 1. Clone the repo
 
@@ -129,10 +129,10 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 ### 3. Deploy Custom APIs
 
 In this code pattern, custom APIs are developed to perform various tasks such as:
-    - Store users data in a Database
-        - Search users phone number and send out an OTP
-        - Validate OTP and Authenticate users
-        - Query users data
+- Store users data in a Database
+- Search users phone number and send out an OTP
+- Validate OTP and Authenticate users
+- Query users data
 
 Custom APIs are developed in Python Flask and you can deploy it in OpenShift or IBM Cloud Foundry.
 
