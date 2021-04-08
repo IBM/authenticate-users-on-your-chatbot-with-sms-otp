@@ -30,8 +30,7 @@ When you have completed this code pattern, you will understand how to:
 
 # Watch the Video
 
-Coming Soon.
-<!-- [![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg) -->
+[![video](http://img.youtube.com/vi/KVAcdJTe8Xs/0.jpg)](https://www.youtube.com/watch?v=KVAcdJTe8Xs)
 
 # Prerequisites
 1. [IBM Cloud Account](https://cloud.ibm.com/registration): Create an IBM Cloud account.
