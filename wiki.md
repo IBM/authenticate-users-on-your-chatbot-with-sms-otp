@@ -22,7 +22,7 @@ Retrive confidential data of users through chatbot by authenticating users on ch
 
 # Summary
 
-In this code pattern you will learn to build a chatbot that authenticates users through an SMS one time passcode (OTP).
+In this code pattern you will learn how to authenticate users on your chatbot with an SMS one-time passcode
 
 # Technologies
 
