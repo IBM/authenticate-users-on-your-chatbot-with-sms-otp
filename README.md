@@ -34,22 +34,25 @@ Coming Soon.
 <!-- [![video](http://img.youtube.com/vi/Jxi7U7VOMYg/0.jpg)](https://www.youtube.com/watch?v=Jxi7U7VOMYg) -->
 
 # Prerequisites
-1. [IBM Cloud Account]()
-2. [IBM Cloud CLI]()
-3. [OpenShift ROKS Cluster]()
-4. [OC CLI]()
-5. [Git CLI]()
+1. [IBM Cloud Account](https://cloud.ibm.com/registration): Create an IBM Cloud account.
+2. [IBM Cloud CLI](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started&locale=en-US): Download and Install IBM Cloud CLI tool.
+3. [OpenShift ROKS Cluster](https://cloud.ibm.com/kubernetes/catalog/create?platformType=openshift): Create an OpenShift Cluster.
+4. [OC CLI](https://docs.openshift.com/container-platform/4.6/cli_reference/openshift_cli/getting-started-cli.html): Download and Install OpenShift CLI tool.
+5. [Git Client](https://git-scm.com/downloads): Download Git Client CLI.
 
 # Steps
 
-1. [Clone the repo](#1-clone-the-repo).
-2. [Create Twilio service](#2-create-twilio-service).
-3. [Deploy Custom APIs](#3-deploy-custom-apis).
-4. [Create a Cloud Function Action](#4-create-a-cloud-function-action).
-5. [Create Watson Assistant Services](#5-create-watson-assistant-services).
-6. [Import Watson Assistant workspace](#6-import-watson-assistant-workspace).
-7. [Configure Watson Assistant with Cloud Function URL](#7-configure-watson-assistant-with-cloud-function-url).
-8. [Run the Web Application](#8-run-the-web-application).
+1. [Clone the repo](#1-clone-the-repo)
+2. [Setup Twilio messaging service](#2-setup-twilio-messaging-service)
+    - 2.1. [Create Twilio service]()
+    - 2.2. [Create Twilio Trial Number]()
+    - 2.3. [Verified Caller IDs]()
+3. [Deploy Custom APIs](#3-deploy-custom-apis)
+4. [Create a Cloud Function Action](#4-create-a-cloud-function-action)
+5. [Create Watson Assistant Services](#5-create-watson-assistant-services)
+6. [Import Watson Assistant workspace](#6-import-watson-assistant-workspace)
+7. [Configure Watson Assistant with Cloud Function URL](#7-configure-watson-assistant-with-cloud-function-url)
+8. [Run the Web Application](#8-run-the-web-application)
 
 ### 1. Clone the repo
 
@@ -60,9 +63,13 @@ git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp
 ```
 
 
-### 2. Create Twilio service
+### 2. Setup Twilio messaging service
 
 Twilio is a SaaS offering that provides APIs to make and receive calls or text messages. We will be using Twilio to send SMS to user programmatically from backend. Lets start by creating a free Twilio service.
+
+---
+
+#### 2.1 Create Twilio service
 
 - Create a free Twilio service here: <https://www.twilio.com/try-twilio>.
 
@@ -91,6 +98,8 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 - The final question asked to you would be **What do you want to do first?**, select **Skip to dashboard** to proceed.
 
     ![](doc/source/images/twilioWelcome4.png)
+---
+#### 2.2 Create Twilio Trial Number
 
 - You will need a Twilio `Trial Number` to send messages(OTP). Click on **Get a Trial Number** as shown.
 
@@ -103,18 +112,17 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 - A confirmation will be displayed once the number is generated, click on **Done**.
 
     ![](doc/source/images/congrats.png)
+---
+#### 2.3 Verified Caller IDs
 
+- Twilio trial number doesn't send messages to your phone number if your phone number is not added to the `Verified Caller IDs` list. This is a limitation of a free trial number. Visit <https://www.twilio.com/console/phone-numbers/verified> and add your phone number to the verified caller ID list before you continue.
+---
 - To establish connection between the APIs and Twilio we need to get the `trial_number`, `account_sid` and `auth_token` from Twilio. 
 
-- Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 3](#3-deploy-custom-apis-on-cloud).
-
-    ![](doc/source/images/credentials-twilio.png)
+- Visit <https://www.twilio.com/console> and expand the **Project Info** tab. You will see the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN`, copy it in some notepad as it will be used in [Step 3](#3-deploy-custom-apis).
+![](doc/source/images/credentials-twilio.png)
 
 - At this point, you should have the `TRIAL NUMBER`, `ACCOUNT SID` and `AUTH TOKEN` from Twilio service.
-
-#### Verified Caller IDs
-
-Twilio trial number doesn't send messages to your phone number if your phone number is not added to the `Verified Caller IDs` list. This is a limitation of a free trial number. Visit <https://www.twilio.com/console/phone-numbers/verified> and add your phone number to the verified caller ID list before you continue.
 
 - Now lets deploy the custom APIs and configure twilio credentials.
 
@@ -240,7 +248,7 @@ otp-apis-url   otp-apis-url-default.xxx.us-south.containers.appdomain.cloud   / 
 Invoking 'cf push'...
 Shown below is a sample output
     
-Pushing from manifest to org manoj.jahgirdar@in.ibm.com<Do not reveal your ibm id here> / space dev as manoj.jahgirdar@in.ibm.com...
+Pushing from manifest to org abc@in.ibm.com / space dev as abc@in.ibm.com...
     
 ...
     
@@ -261,10 +269,13 @@ Waiting for app to start...
     #0   <b>running</b>   2020-05-16T12:36:15Z   12.6%   116.5M of 512M   796.2M of 1
 </code></pre>
 
-* Once the app is deployed you can visit the `routes` to launch the application. <mention how to get to the routes.. may be from output of above command?>
-* Make a note of this url, as `APIEndPoint` to be used in step 4.
+* Once the app is deployed, from the output of the above command, you can visit the `routes` to launch the application.
 
->Example: http://otp-api.xx-xx.mybluemix.net
+* Make a note of this url, as `APIENDPOINT` to be used in [step 4](#4-create-a-cloud-function-action).
+
+>Example: http://otp-api.xx-xx.mybluemix.net if deployed on IBM Cloud Foundry, http://otp-apis-url-default.xxx.us-south.containers.appdomain.cloud if deployed on OpenShift
+
+>Note: Add `http://` to the OpenShift url if not present.
 
 - At this point, you will have successfully deployed the Custom APIs on IBM Cloud. Now lets access it and see how it looks like.
 
@@ -298,11 +309,13 @@ IBM Cloud Function is a Serverless Architecture where in a user can write a snip
 * You will see a hello world code in the canvas
 ![helloWorld](doc/source/images/helloWorld.png)
 
-* Copy the code from [here](cloud-function-action/otp-auth.py) and replace it in the canvas as shown. In 2-3 sentences explain what this code does.
+* Copy the code from [cloud-function-action/otp-auth.py](cloud-function-action/otp-auth.py) and replace it in the canvas as shown. 
 ![cloudCode](doc/source/images/cloudCode.png)
 
+* This code acts as an intermediater between Watson Assistant and the Custom APIs. Any API calls requested by Watson Assistant will go through this Cloud Function code, and response will be returned back to Watson Assistant.
+
 * Replace the `APIENDPOINT` in the code with the URL that you copied to your notepad in [Step 3](#3-deploy-custom-apis).
->Example: APIENDPOINT = "http://158.123.197.53:32000" This url to be similar to route one (without IP). Make a mention that it should be http in case of openshift deployment.
+>Example: APIENDPOINT = "http://158.123.197.53:32000" This url to be similar to route one (without IP). Make sure `http://` is added in case of openshift deployment.
 
 * Click on **Endpoints** on the left panel and select **Enable as Web Action**. Click on **Save**.
 ![cfEnable](doc/source/images/cfEnable.png)
@@ -314,7 +327,7 @@ IBM Cloud Function is a Serverless Architecture where in a user can write a snip
 
 ### 5. Create Watson Assistant services
 
-* Create a [Watson Assistant](https://cloud.ibm.com/catalog/services/watson-assistant) service. Provide instructions to select region, lite plan and click create. Wait for a few seconds for an instance to be provisioned. Because this code pattern is generic and has wide applicability, expect beginners also to execute this code pattern.
+* Login to IBM Cloud, and create a [Watson Assistant](https://cloud.ibm.com/catalog/services/watson-assistant) service by selecting the **Lite** plan and clicking on **Create**.
 ![createWA](doc/source/images/createWA.png)
 
 * Click **Launch Watson Assistant** to launch console.
@@ -435,7 +448,7 @@ otp-webapp-url   otp-webapp-url-default.xxx.us-south.containers.appdomain.cloud 
 
 </details>
 
-<details><summary></b>Build and Deploy Locally</b></summary>
+<details><summary><b>Build and Deploy Locally</b></summary>
 
 #### Build
 - Open the repository in your terminal and navigate to `node-web-application` directory.
@@ -480,14 +493,12 @@ Once you have deployed the Web Application, continue with the documentation:
 >Note: The phone number should be the same as registered on Twilio.
 
 - After Successful registration you will see a success prompt and you will have received the policy details on your registered mobile number. 
-<!-- Will the SMS screenshot mislead users? Better to remove that from screenshot? -->
-<!-- ![success](doc/source/images/success.png) -->
 
 - You can now interact with chatbot and know your confidential information in a secure manner.
 ![chatFlow](doc/source/images/chatFlow.png)
 
 ## Summary
-In this Code Pattern we created a chatbot using Watson Assistant which securely verifies user identity using SMS OTP authentication and interacts to display confidential information.
+In this Code Pattern you learned to create a chatbot using Watson Assistant which securely verifies user identity using SMS OTP authentication and interacts to display confidential information.
 
 ## Questions
 
