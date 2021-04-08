@@ -16,7 +16,7 @@ Retrive confidential data of users through chatbot by authenticating users on ch
 
 ### Github repo
 
-- https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp.git
+- https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp
 
 ### Video Link
 
