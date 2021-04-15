@@ -1,10 +1,10 @@
 # Short Title
 
-Authenticate users on your chatbot with SMS one time passcode
+Authenticate chatbot users with SMS one-time passcode
 
 # Long Title
 
-Retrive confidential data of users through chatbot by authenticating users on chatbot with SMS one time passcode.
+Authenticate Watson Assistant users with SMS one-time passcode for sharing confidential information
 
 
 # Author
