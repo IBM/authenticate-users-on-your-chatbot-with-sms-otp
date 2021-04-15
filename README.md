@@ -81,22 +81,18 @@ Twilio is a SaaS offering that provides APIs to make and receive calls or text m
 
     ![](doc/source/images/verifyMobileTwilio.png)
 
-- On successful verification you should see a welcome greeting message, additionally you will see a question **Do you write code?**, select **Yes** to proceed.
+- On successful verification you should see a welcome greeting message, additionally you will see some questions, select as described below.
 
+    ![](doc/source/images/twilio-details.png)
 
-    ![](doc/source/images/twilioWelcome.png)
+    Questions|Answers
+    --|--
+    Which Twilio product are you here to use?| SMS
+    What do you plan to build with Twilio?| Alerts & Notifications
+    How do you want to build with Twilio?| With code
+    What is your preferred coding language?| Python
+    Would you like Twilio to host your code?| No, I want to use my own hosting service
 
-- The second question asked to you would be **What is your preferred language?**, select **Python** to proceed.
-
-    ![](doc/source/images/twilioWelcome2.png)
-
-- Third question asked to you would be **What is your goal today?**, select **Use Twilio in a project** to proceed.
-
-    ![](doc/source/images/twilioWelcome3.png)
-
-- The final question asked to you would be **What do you want to do first?**, select **Skip to dashboard** to proceed.
-
-    ![](doc/source/images/twilioWelcome4.png)
 ---
 #### 2.2 Create Twilio Trial Number
 
