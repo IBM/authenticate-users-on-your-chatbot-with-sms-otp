@@ -11,7 +11,7 @@ When you have completed this code pattern, you will understand how to:
 * Build APIs to authenticate users on your chatbot.
 * Make external API calls through Watson Assistant.
 
-![architecture](doc/source/images/architecture1.png)
+![architecture](doc/source/images/architecture.png)
 
 ## Flow
 

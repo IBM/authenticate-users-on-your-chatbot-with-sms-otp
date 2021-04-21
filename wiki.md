@@ -55,7 +55,7 @@ When you have completed this code pattern, you will understand how to:
 # Flow
 
 <!--add an image in this path-->
-![architecture](doc/source/images/architecture1.png)
+![architecture](doc/source/images/architecture.png)
 
 
 1. User registers for a policy on the portal.
