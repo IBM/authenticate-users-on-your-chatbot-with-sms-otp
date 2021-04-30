@@ -65,11 +65,7 @@ When you have completed this code pattern, you will understand how to:
 
 ### 1. Clone the repo
 
-Clone the `authenticate-users-on-your-chatbot-with-sms-otp` repo locally. In a terminal, run:
-```bash
-git clone https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp.git
-```
-
+<a href='didact://?commandId=vscode.didact.sendNamedTerminalAString&text=terminal$$git%20clone%20https%3A%2F%2Fgithub.com%2FIBM%2Fauthenticate-users-on-your-chatbot-with-sms-otp.git%20%26%26%20cd%20authenticate-users-on-your-chatbot-with-sms-otp%2F' title='Clone the Repo'><button>Clone the Repo</button></a>
 
 ### 2. Setup Twilio messaging service
 
