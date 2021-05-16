@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: otp-apis
-        image: manojjahgirdar/otp-apis:v8
+        image: docker.pkg.github.com/ibm/authenticate-users-on-your-chatbot-with-sms-otp/otp-apis:1.0
         ports:
         - containerPort: 8080
 
