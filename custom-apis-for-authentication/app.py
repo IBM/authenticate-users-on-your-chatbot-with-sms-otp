@@ -15,7 +15,7 @@ def index():
 
 @flaskAppInstance.route('/storeTwilioCredentials', methods=['POST'])
 def storeTwilioCredentials():
-    receivedPayload = json.loads(request.get_data())
+    receivedPayload = json.loads(request.get_data().decode('utf-8'))
 
     data = {
         "trial_number": receivedPayload.get('trial_number'),
