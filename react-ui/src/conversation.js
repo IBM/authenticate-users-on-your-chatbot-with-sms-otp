@@ -5,7 +5,7 @@ let sessionId = null;
 function getMessage(text, context, firstCallVal, callback) {
 
   const options = {
-    url:`http://${window.location.hostname}:${window.location.port}/api/message`,
+    url:`${window.location.protocol}//${window.location.hostname}:${window.location.port}/api/message`,
     method: 'POST',
     headers: {
       Accept: 'application/json',
@@ -34,7 +34,7 @@ function getMessage(text, context, firstCallVal, callback) {
 }
 
 function getSessionId(callback) {
-  fetch(`http://${window.location.hostname}:${window.location.port}/api/session`, {
+  fetch(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/api/session`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
