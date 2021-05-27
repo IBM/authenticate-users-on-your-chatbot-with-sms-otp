@@ -104,7 +104,7 @@ class LandingPage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get(`http://${window.location.hostname}:${window.location.port}/dbUrl`).then(res=>{
+    axios.get(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/dbUrl`).then(res=>{
       var url = ''
       if(res.data.slice(-1) === '/'){
         url = res.data.slice(0, -1)
@@ -117,7 +117,7 @@ class LandingPage extends React.Component {
       this.getTable()
     }).catch(err=>{
       alert('Authentication is required to continue')
-      window.location.replace(`http://${window.location.hostname}:${window.location.port}/auth`)
+      window.location.replace(`${window.location.protocol}//${window.location.hostname}:${window.location.port}/auth`)
       console.log(err)
     })
   }
@@ -273,7 +273,7 @@ class LandingPage extends React.Component {
       }
       if (text === 'New User') {
         // this.section2.current.scrollIntoView()
-        window.location.replace(`http://${window.location.hostname}:${window.location.port}#section2`);
+        window.location.replace(`${window.location.protocol}//${window.location.hostname}:${window.location.port}#section2`);
         this.initBot()
         // console.log('yes')
         return
@@ -287,7 +287,7 @@ class LandingPage extends React.Component {
       if (text === 'Display Users') {
         if (this.state.table === true){
           // this.section3.current.scrollIntoView()
-          window.location.replace(`http://${window.location.hostname}:${window.location.port}#section3`);
+          window.location.replace(`${window.location.protocol}//${window.location.hostname}:${window.location.port}#section3`);
           // console.log('yes')
         } else {
             var obj = this.state.messages
