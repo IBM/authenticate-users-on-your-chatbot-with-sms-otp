@@ -100,9 +100,9 @@ Configure the APIs by entering the credentials copied in the previous steps and 
 
 You need to be logged in to your IBM Cloud account in the Developer Playground to create and configure services.
 
-<a class="button is-dark is-small" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%203$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
+<a class="button is-dark is-small" title="Open Terminal" href="didact://?commandId=terminal-for-nodejs-container:new" >Open new terminal</a><br/>
 
-<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%203$$cd%20authenticate-users-on-your-chatbot-with-sms-otp%2F%20%26%26%20cd%20node-web-application%20%20%26%26%20servicename%3D%22cp-wa%22%20%26%26%20service%3D%22conversation%22%20%26%26%20region%3D%22eu-gb%22%20%26%26%20ibmcloud%20resource%20service-instance-create%20%24servicename%20%24service%20free%20%24region%20%26%26%20ibmcloud%20resource%20service-key-create%20%22%24servicename-creds%22%20Manager%20--instance-name%20%24servicename%20%3E%20%22%24servicename.txt%22%20%202%3E%261%20%26%26%20apikey%3D%24(cat%20%24servicename.txt%20%7C%20awk%20%27%241%20%3D%3D%20%22apikey%3A%22%20%7Bprint%20%242%7D%27)%20%26%26%20url%3D%24(cat%20%24servicename.txt%20%7C%20awk%20%27%241%20%3D%3D%20%22url%3A%22%20%7Bprint%20%242%7D%27)%20%26%26%20JSON_STRING%3D%27%7B%22apikey%22%3A%22%27%22%24apikey%22%27%22%2C%22url%22%3A%22%27%22%24url%22%27%22%7D%27%20%26%26%20echo%20%24JSON_STRING%20%3E%20watson-assistant.json">Create Watson Assistant</a>
+<a class="button is-dark is-small" title="Login to IBM Cloud" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%203$$ibmcloud%20login%20--sso%20%26%26%20ibmcloud%20target%20--cf%20%26%26%20ibmcloud%20target%20-g%20Default">Login to IBM Cloud</a>
 
 - Navigate to Watson Assistant Instance from [here](https://eu-gb.assistant.watson.cloud.ibm.com/instances).
 - Follow the steps [here](https://github.com/IBM/authenticate-users-on-your-chatbot-with-sms-otp#6-import-watson-assistant-workspace) to import a Watson Assistant Skill and configure with Cloud Function URL.
@@ -112,7 +112,7 @@ You need to be logged in to your IBM Cloud account in the Developer Playground t
 You can build and run the APIs within the Developer Playground, click on **Build and Run** to start the application.
 You can also manage the created services in [IBM Cloud Dashboard](https://cloud.ibm.com/resources).
 
-<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%203$$node%20server.js">Build and Run</a>
+<a class="button is-dark is-small" title="Build and Run" href="didact://?commandId=vscode.didact.sendNamedTerminalAString&text=nodejs%20terminal%203$$cd%20authenticate-users-on-your-chatbot-with-sms-otp%2Fnode-web-application%20%26%26%20node%20server.js">Build and Run</a>
 
 You can stop the Apps by clicking on the below buttons.
 
